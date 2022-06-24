@@ -7,6 +7,9 @@ const mongoose = require("mongoose");
 const multer = require("multer");
 const Student = require("./models/studentModel");
 const Fee = require("./models/feeModel");
+const compression = require("compression");
+
+app.use(compression());
 app.use(bodyParser.json());
 // app.use(express.json());
 app.use(morgan("dev"));
@@ -18,7 +21,6 @@ const fileStorage = multer.diskStorage({
     filename: (req, file, cb) => {
         let ext = file.mimetype.split("/");
         ext = "." + ext[1];
-        console.log(ext);
         cb(
             null,
             new Date().toISOString().replace(/:/g, "-") +
@@ -75,7 +77,6 @@ app.get("/", async (req, res) => {
     for (let i = 0; i < grades.length; i++) {
         const grade = grades[i];
         const obj = {};
-        // console.log(grade);
         const girlsList = await Student.find({
             grade: grade.toLowerCase(),
             gender: "Female",
@@ -89,10 +90,8 @@ app.get("/", async (req, res) => {
         obj["grade"] = grade;
         obj["girls"] = girlsList.length;
         obj["boys"] = boysList.length;
-        // console.log(obj);
         numberOfStudents.push(obj);
     }
-    // console.log(numberOfStudents);
     const context = {
         title: "Shining Stars Academy",
         grades,
@@ -104,7 +103,6 @@ app.get("/", async (req, res) => {
 app.get("/grade/:grade", async (req, res) => {
     const grade = req.params.grade;
     const students = await Student.find({ grade });
-    console.log(students);
 
     res.status(200).render("grade", { students, grade });
 });
@@ -117,9 +115,7 @@ app.get("/studentForm", (req, res) => {
     res.status(200).render("studentForm");
 });
 app.post("/studentForm", async (req, res) => {
-    // console.log(req.body);
     // res.status(200).render("studentForm");
-    console.log(req.body);
     const student = await Student.create(req.body);
     res.status(200).send(student);
 });
@@ -165,9 +161,6 @@ app.get("/student/updateFee", (req, res) => {
         february: feeStructure,
         march: feeStructure,
     };
-    console.log(feeStructure);
-    console.log(studentFee);
-    // console.log(studentFee["January"]["receiptNumber"]);
 
     res.status(200).render("feeBook", { months, studentFee });
 });
@@ -189,7 +182,7 @@ app.get("/test", (req, res) => {
     res.status(200).render("test", { months });
 });
 app.post("/test", (req, res) => {
-    console.log(req.body);
+
     res.status(200).send(req.body);
 });
 
@@ -198,7 +191,6 @@ app.get("/updateGradeFee", (req, res) => {
 });
 
 app.post("/updateGradeFee", async (req, res) => {
-    console.log(req.body);
     const { tution, development, exam, transport } = req.body;
     const total = tution * 1 + development * 1 + exam * 1 + transport * 1;
     const newFee = await Fee.create({
@@ -230,11 +222,9 @@ app.get("/student/:id", async (req, res) => {
     ];
     // const student = await Student.findById(req.params.id);
 
-    console.log(student);
     const studentFee = student["fee"];
     const grade = student["grade"];
     const gradeFee = await Fee.findOne({ grade: grade });
-    console.log(gradeFee);
     res.status(200).render("studentDetail", {
         student,
         studentFee,
@@ -260,11 +250,9 @@ app.get("/student/feeUpdate/:id", async (req, res) => {
     ];
     const student = await Student.findById(req.params.id);
 
-    console.log(student);
     const studentFee = student["fee"];
     const grade = student["grade"];
     const gradeFee = await Fee.findOne({ grade: grade });
-    console.log(gradeFee);
     res.status(200).render("feeUpdate", {
         student,
         studentFee,
@@ -284,7 +272,6 @@ app.post("/student/feeUpdate/:id", async (req, res) => {
         };
     }
     // data = JSON.stringify(data);
-    console.log({ fee: data });
     const updatedStudent = await Student.findByIdAndUpdate(req.params.id, {
         fee: data,
     });
@@ -294,6 +281,5 @@ app.get("/takeImage", (req, res) => {
     res.status(200).render("takeImage");
 });
 app.post("/takeImage", (req, res) => {
-    console.log(req.file);
     res.status(200).send("done");
 });

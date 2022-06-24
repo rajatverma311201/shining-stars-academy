@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="/styles/studentDetails.css" />
+        <title>Student Details</title>
+    </head>
+    <body>
+        <div class="container">
+            <h1 class="page-heading">Student Details</h1>
+
+            <!--first container start -->
+            <div class="first-container">
+                <div class="grid-item-first first-1">
+                    <div class="item1">
+                        <div class="srNumber-container">
+                            <div class="srNumber-heading field-heading">
+                                Sr No.
+                            </div>
+                            <div class="srNumber bold">
+                                <%= student.srNumber %>
+                            </div>
+                        </div>
+                        <div class="grade-container">
+                            <div class="grade-heading field-heading">Grade</div>
+                            <div class="grade bold">
+                                <%= student.grade.toUpperCase() %>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="item-2">
+                        <div class="dob-container">
+                            <div class="dob-heading field-heading">
+                                Date of Birth
+                            </div>
+                            <div class="dob bold"><%= student.dob %></div>
+                        </div>
+                        <div class="gender-container">
+                            <div class="gender-heading field-heading">
+                                Gender
+                            </div>
+                            <div class="gender bold"><%= student.gender %></div>
+                        </div>
+                    </div>
+
+                    <div class="item-3">
+                        <div class="name-container">
+                            <div class="name-heading field-heading">Name</div>
+                            <div class="name bold">
+                                <%= student.firstName.toUpperCase() + " " +
+                                student.lastName.toUpperCase() %>
+                            </div>
+                        </div>
+                        <div class="aadharNumber-container">
+                            <div class="aadharNumber-heading field-heading">
+                                Aadhar Number
+                            </div>
+                            <div class="aadharNumber bold">
+                                <%= student.aadharNumber %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- container for student image  -->
+                <div class="grid-item-first first-2">
+                    <div class="student-image-container">
+                        <div class="student-image">
+                            <img
+                                src="/images/2022-06-18T09-29-16.449Z__.jpeg"
+                                alt="<%= student.name %>"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- first container end -->
+            <hr />
+
+            <div class="parent-container">
+                <div class="fatherName-container">
+                    <div class="fatherName-heading field-heading">
+                        Father's Name
+                    </div>
+                    <div class="fatherName bold">
+                        <%= student.fatherName.toUpperCase() %>
+                    </div>
+                </div>
+
+                <div class="motherName-container">
+                    <div class="motherName-heading field-heading">
+                        Mother's Name
+                    </div>
+                    <div class="motherName bold">
+                        <%= student.motherName.toUpperCase() %>
+                    </div>
+                </div>
+            </div>
+
+            <hr />
+            <div class="address-container">
+                <div class="address-heading field-heading">Address</div>
+                <div class="address bold"><%= student.address %></div>
+            </div>
+            <hr />
+            <div class="contact-field-container">
+                <div class="contact-container">
+                    <div class="contact-heading field-heading">Contact</div>
+                    <div class="contact bold"><%= student.contact %></div>
+                </div>
+
+                <div class="alternateContact-container">
+                    <div class="alternateContact-heading field-heading">
+                        Alternate Contact
+                    </div>
+                    <div class="alternateContact bold">
+                        <%= student.alternateContact %>
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <!-- <div class="rollNumber-container">
+                <div class="rollNumber-heading field-heading">Roll No.</div>
+                <div class="rollNumber bold"><%= student.rollNumber %></div>
+            </div>
+
+            <div class="admissionYear-container">
+                <div class="admissionYear-heading field-heading">
+                    Admission Year
+                </div>
+                <div class="admissionYear bold">
+                    <%= student.admissionYear %>
+                </div>
+            </div> -->
+
+            <table>
+                <tr>
+                    <th>Month</th>
+                    <th>Receipt No.</th>
+                    <th>Date</th>
+                    <th>Tution Fee</th>
+                    <th>Development Fee</th>
+                    <th>Exam Fee</th>
+                    <th>Transport Fee</th>
+                    <th>Total</th>
+                    <th>Paid</th>
+                    <th>Balance</th>
+                </tr>
+                <tbody>
+                    <% months.forEach(month =>{%>
+                    <tr>
+                        <td><%= month %></td>
+                        <td>
+                            <%= studentFee[month.toLowerCase()].receiptNumber %>
+                        </td>
+                        <td><%= studentFee[month.toLowerCase()].date %></td>
+                        <td><%= gradeFee.tution %></td>
+                        <td><%= gradeFee.development %></td>
+                        <td><%= gradeFee.exam %></td>
+                        <td><%= gradeFee.transport %></td>
+                        <td><%= gradeFee.total %></td>
+                        <td><%= studentFee[month.toLowerCase()].paid %></td>
+                        <td>
+                            <%= gradeFee.total -
+                            studentFee[month.toLowerCase()].paid %>
+                        </td>
+                    </tr>
+                    <%})%>
+                </tbody>
+            </table>
+            <a href="/student/feeUpdate/<%= student._id %>"
+                ><button>Click to Update Fee</button></a
+            >
+        </div>
+    </body>
+</html>

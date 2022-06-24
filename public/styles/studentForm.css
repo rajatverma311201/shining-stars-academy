@@ -1,0 +1,179 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&display=swap");
+
+:root {
+    --color-primary: #00308f;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "JetBrains Mono", monospace;
+}
+body {
+    padding: 2.5rem;
+}
+
+label {
+    font-weight: 800;
+}
+
+.page-heading {
+    font-weight: 800;
+    width: 100%;
+    padding: 1rem;
+    color: var(--color-primary);
+    text-align: center;
+}
+.student {
+    width: 100%;
+    /* width: 500px; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+form {
+    width: 100%;
+}
+form label {
+    color: black;
+}
+.gender {
+    flex-direction: row;
+}
+
+.gender > div {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+.name-heading,
+.grade-heading,
+.srNumber > label,
+.aadharNumber > label,
+.dob > label,
+.gender-heading,
+.dob-heading,
+.admissionYear > label,
+.grade > label,
+.rollNumber > label,
+.parent-heading,
+.contact-heading,
+.address > label,
+.image > label,
+.image-heading {
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 12.5px;
+    text-align: center;
+    padding: 0.25rem 0;
+    width: 75%;
+    color: white;
+    background-color: var(--color-primary);
+    font-size: 1.25rem;
+    font-weight: 900;
+}
+.name,
+.contact-container,
+.parents {
+    margin: 1rem 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.name > div,
+.contact-container > div,
+.parents > div {
+    margin: 0.25rem 1.5rem;
+    display: flex;
+}
+
+.aadharNumber > label,
+.srNumber > label,
+.dob > label,
+.gender > label,
+.admissionYear > label,
+.rollNumber > label,
+.image > label,
+.address > label,
+.grade > label {
+    margin-bottom: 1rem;
+}
+.srNumber,
+.gender,
+.dob,
+.admissionYear,
+.rollNumber,
+.aadharNumber,
+.image,
+.address,
+.grade {
+    padding: 0;
+    padding-bottom: 0;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dob-heading {
+    margin-bottom: 1rem;
+}
+.submit {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.submit > input {
+    padding: 0.5rem 2rem;
+    margin: 1rem;
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    background-color: white;
+    border: 2.5px solid var(--color-primary);
+    border-radius: 10px;
+    transition: 0.1s;
+}
+
+.submit > input:hover {
+    cursor: pointer;
+    background-color: var(--color-primary);
+    color: white;
+    transition: 0.1s;
+}
+input[type="text"] {
+    border: none;
+    border-bottom: 2.5px solid rgb(190, 190, 190);
+    padding: 0.25rem;
+   
+    /* background-color: rgba(60, 164, 255, 0.057); */
+    transition: 0.1s;
+}
+
+input[type="text"]:focus {
+    /* color: white; */
+    transition: 0.1s;
+    /* transition: 0.5s; */
+    outline: none;
+    border: none;
+    border-bottom: 2.5px solid var(--color-primary);
+}
+
+input:focus::placeholder {
+    color: transparent;
+}
+
+input:hover,
+#grade:hover,
+#gender:hover,
+#image:hover {
+    cursor: pointer;
+}
+
+.submit {
+    margin: 1rem auto;
+}

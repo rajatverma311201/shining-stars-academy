@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="/styles/feeBook.css" />
+        <title>feeBook</title>
+    </head>
+    <body>
+        <form action="/student/feeUpdate/<%= student._id %>" method="post">
+            <table>
+                <tr>
+                    <th>Month</th>
+                    <th>Receipt No.</th>
+                    <th>Date</th>
+                    <th>Tution Fee</th>
+                    <th>Development Fee</th>
+                    <th>Exam Fee</th>
+                    <th>Transport Fee</th>
+                    <th>Total</th>
+                    <th>Paid</th>
+                </tr>
+                <% months.forEach(month =>{ %>
+                <tr>
+                    <td><%= month %></td>
+                    <td>
+                        <input type="text" name="receiptNumber" id="" value="<%= studentFee[month.toLowerCase()].receiptNumber %>"/>
+                    </td>
+                    <td>
+                        <input type="date" name="date" id="" value="<%= studentFee[month.toLowerCase()].date %>"/>
+                    </td>
+                    <td><%= gradeFee.tution %></td>
+                    <td><%= gradeFee.development %></td>
+                    <td><%= gradeFee.exam %></td>
+                    <td clas><%= gradeFee.transport %></td>
+                    <td><%= gradeFee.total %></td>
+                    <td>
+                        <input
+                            type="text"
+                            name="paid"
+                            id="paid"
+                            value="<%= studentFee[month.toLowerCase()].paid %>"
+                        />
+                    </td>
+                </tr>
+                <%})%>
+            </table>
+            <input type="submit" value="Submit" />
+        </form>
+
+        <script></script>
+    </body>
+</html>

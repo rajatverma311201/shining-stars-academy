@@ -1,0 +1,98 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&display=swap");
+
+:root {
+    --color-primary: #00308f;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "JetBrains Mono", monospace;
+}
+
+body {
+    padding: 1rem;
+}
+
+.grade-container {
+    margin: 1rem 2rem;
+    background-color: var(--color-primary);
+    padding: 0.5rem;
+    border-radius: 10px;
+}
+.grade {
+    font-size: 2.5rem;
+    font-weight: 800;
+    text-align: center;
+    color: white;
+}
+
+.total-students-container {
+    margin: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.total-students {
+    color: white;
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+.student-container {
+    margin: 1rem 5rem;
+    padding: 1rem;
+    border: 2.5px solid var(--color-primary);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.student {
+}
+
+.fee-details-link {
+    height: 100%;
+    text-decoration: none;
+}
+.fee-details-button {
+    font-weight: bold;
+    padding: 0.75rem;
+    border-radius: 10px;
+    height: 100%;
+    border: none;
+    color: white;
+    background-color: var(--color-primary);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2.5px solid var(--color-primary);
+    gap: 10px;
+    transition: 0.15s;
+}
+.fee-details-link:hover button {
+    background-color: white;
+    color: var(--color-primary);
+    cursor: pointer;
+    transition: 0.15s;
+}
+button:hover span:nth-child(even) {
+    animation-name: shake;
+    animation-duration: 0.75s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes shake {
+    0%,
+    100%,
+    {
+        transform: translateX(-10);
+    }
+    50%{
+        transform:translateX(10px);
+    }
+    /* 75% {
+        transform: translateX(-10px);
+    } */
+}

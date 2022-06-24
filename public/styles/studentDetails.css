@@ -1,0 +1,127 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&display=swap");
+
+:root {
+    --color-primary: #00308f;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "JetBrains Mono", monospace;
+}
+
+body {
+    margin: 0.25rem;
+    padding: 0.25rem;
+}
+
+.page-heading {
+    font-size: 2.25rem;
+    text-align: center;
+    background-color: var(--color-primary);
+    color: #fff;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+}
+.field-heading {
+    font-size: 0.9rem;
+}
+.bold {
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.first-container {
+    padding: 0.25rem 2rem 1rem 3rem;
+    display: grid;
+    gap: 10px;
+}
+
+.first-1 {
+    border: 1px solid var(--color-primary);
+    border-radius: 10px;
+    grid-row: 1;
+    grid-column: 1 / span 4;
+    display: flex;
+    justify-content: space-evenly;
+    /* flex-direction: column; */
+}
+.first-2 {
+    /* grid-row: 2; */
+    /* grid-column: 1/ span 3; */
+    grid-row: 1;
+    grid-column: 5;
+}
+
+.first-1 > div {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+.first-1 > div,
+.first-2 > div {
+    margin: 0.5rem;
+}
+
+.student-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+hr {
+    width: 75%;
+    margin: 0.2rem auto;
+    border: none;
+    border-bottom: 0.25px solid var(--color-primary);
+}
+.student-image > img {
+    width: 125px;
+    height: 125px;
+    box-shadow: 5px 5px 25px -10px grey;
+}
+
+.parent-container,
+.contact-field-container {
+    margin: 0.2rem;
+    padding: 0.5rem;
+    text-align: center;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.address-container {
+    margin: 0.25rem;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    word-wrap: normal;
+    text-align: center;
+}
+
+table {
+    border-collapse: collapse;
+    margin: 1rem auto;
+}
+table,
+th,
+td {
+    border: 1.5px solid black;
+}
+th {
+    font-size: 0.7rem;
+    font-weight: normal;
+}
+th,
+td {
+    padding: 0.25rem;
+    text-align: center;
+}
+
+tbody td {
+    font-size: 0.8rem;
+}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="/styles/index.css" />
+        <title><%= title %></title>
+    </head>
+    <body>
+        <div class="school-name">Shining Stars Academy</div>
+        <div class="add-student-container">
+            <a class="link-add-student" href="/studentForm">
+                <button class="btn-add-student">Add a Student</button>
+            </a>
+        </div>
+        <section class="class-list">
+            <% numberOfStudents.forEach(obj=>{ %>
+
+            <a
+                class="class-container"
+                href="/grade/<%= obj['grade'].toLowerCase() %>"
+            >
+                <div class="grade-name"><%= obj.grade %></div>
+                <div class="student-number-container">
+                    <div class="boys">Boys : <%= obj.boys %></div>
+                    <div class="girls">Girls : <%= obj.girls %></div>
+                </div>
+            </a>
+            <% }) %>
+        </section>
+    </body>
+</html>

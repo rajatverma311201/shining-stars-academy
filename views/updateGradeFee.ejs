@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Update Grade Fee</title>
+    </head>
+    <body>
+        <form action="/updateGradeFee" method="POST">
+            <label for="grade">Grade :&nbsp;</label>
+            <select name="grade" id="grade">
+                <option value="">Choose Grade</option>
+                <option value="nur">Nursery</option>
+                <option value="lkg">LKG</option>
+                <option value="ukg">UKG</option>
+                <option value="i">I</option>
+                <option value="ii">II</option>
+                <option value="iii">III</option>
+                <option value="iv">IV</option>
+                <option value="v">V</option>
+                <option value="vi">VI</option>
+                <option value="vii">VII</option>
+                <option value="viii">VIII</option>
+                <option value="ix">IX</option>
+                <option value="x">X</option>
+            </select>
+            <br />
+            <label for="tution">Tution : </label>
+            <input type="text" name="tution" id="tution" />
+            <br />
+            <label for="development">Development : </label>
+            <input type="text" name="development" id="development" />
+            <br />
+            <label for="exam">Exam : </label>
+            <input type="text" name="exam" id="exam" />
+            <br />
+            <label for="transport">Transport : </label>
+            <input type="text" name="transport" id="transport" />
+            <br />
+            <input type="submit" value="Submit" />
+        </form>
+    </body>
+</html>

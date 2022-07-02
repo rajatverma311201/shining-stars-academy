@@ -136,15 +136,26 @@
                 </div>
             </div> -->
 
+            <tr>
+                <th>Month</th>
+                <th>Receipt No.</th>
+                <th>Date</th>
+                <th>Tution Fee</th>
+                <th>Development</th>
+                <th>Computer</th>
+                <th>Stationery</th>
+                <th>Transport</th>
+                <th>Total</th>
+                <th>Paid</th>
+                <th>Balance</th>
+            </tr>
             <table>
                 <tr>
                     <th>Month</th>
                     <th>Receipt No.</th>
                     <th>Date</th>
-                    <th>Tution Fee</th>
-                    <th>Development Fee</th>
-                    <th>Exam Fee</th>
-                    <th>Transport Fee</th>
+                    <th>Tution</th>
+                    <th>Transport</th>
                     <th>Total</th>
                     <th>Paid</th>
                     <th>Balance</th>
@@ -158,14 +169,13 @@
                         </td>
                         <td><%= studentFee[month.toLowerCase()].date %></td>
                         <td><%= gradeFee.tution %></td>
-                        <td><%= gradeFee.development %></td>
-                        <td><%= gradeFee.exam %></td>
+                        <!-- <td><%= gradeFee.development %></td> -->
+                        <!-- <td><%= gradeFee.exam %></td> -->
                         <td><%= gradeFee.transport %></td>
                         <td><%= gradeFee.total %></td>
                         <td><%= studentFee[month.toLowerCase()].paid %></td>
                         <td>
-                            <%= gradeFee.total -
-                            studentFee[month.toLowerCase()].paid %>
+                            0
                         </td>
                     </tr>
                     <%})%>

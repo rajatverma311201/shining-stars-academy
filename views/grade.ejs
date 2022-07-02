@@ -24,6 +24,11 @@
                     </div>
                 </div>
             </div>
+            <div class="fee-container">
+                <a class="link-fee" href="/updategradefee/<%= grade %>">
+                    <button class="btn-fee">Change Fee Structure</button>
+                </a>
+            </div>
             <% students.forEach(student=>{ %>
 
             <div class="student-container">
@@ -45,7 +50,9 @@
                     <button class="fee-details-button">
                         <span>Details</span>
                         <span
-                            ><i class="fa-solid fa-circle-chevron-right fa-2x"></i
+                            ><i
+                                class="fa-solid fa-circle-chevron-right fa-2x"
+                            ></i
                         ></span>
                     </button>
                 </a>

@@ -32,7 +32,10 @@
                 <td><%= studentFee[month.toLowerCase()].transportFee %></td>
                 <td><%= studentFee[month.toLowerCase()].total %></td>
                 <td><%= studentFee[month.toLowerCase()].paid %></td>
-                <td><%= studentFee[month.toLowerCase()].total - studentFee[month.toLowerCase()].paid %></td>
+                <td>
+                    <%= studentFee[month.toLowerCase()].total -
+                    studentFee[month.toLowerCase()].paid %>
+                </td>
             </tr>
             <%})%>
         </table>

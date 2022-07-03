@@ -5,26 +5,30 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Update Grade Fee</title>
+        <style>
+            body {
+                padding: 2.5rem;
+            }
+            input {
+                margin: 0.75rem;
+            }
+        </style>
     </head>
+
     <body>
         <form action="/updateGradeFee/<%= grade %>" method="POST">
-            <label for="grade">Grade :&nbsp;</label>
-            <select name="grade" id="grade">
-                <option value="">Choose Grade</option>
-                <option value="nur">Nursery</option>
-                <option value="lkg">LKG</option>
-                <option value="ukg">UKG</option>
-                <option value="i">I</option>
-                <option value="ii">II</option>
-                <option value="iii">III</option>
-                <option value="iv">IV</option>
-                <option value="v">V</option>
-                <option value="vi">VI</option>
-                <option value="vii">VII</option>
-                <option value="viii">VIII</option>
-                <option value="ix">IX</option>
-                <option value="x">X</option>
-            </select>
+            
+            <label for="admission">Admission : </label>
+            <input type="text" name="admission" id="admission" />
+            <br />
+            <label for="computer">Computer : </label>
+            <input type="text" name="computer" id="computer" />
+            <br />
+            <label for="exam">Examination : </label>
+            <input type="text" name="exam" id="exam" />
+            <br />
+            <label for="stationery">Stationery : </label>
+            <input type="text" name="stationery" id="stationery" />
             <br />
             <label for="tution">Tution : </label>
             <input type="text" name="tution" id="tution" />

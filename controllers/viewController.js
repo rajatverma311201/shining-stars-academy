@@ -50,8 +50,13 @@ exports.addStudentForm = (req, res) => {
 exports.addStudent = async (req, res) => {
     // res.status(200).render("studentForm");
     req.body.image = req.file.filename;
+    const allStudents = await Student.find();
+    const num = allStudents.length;
+    req.body.srNumber = `${num + 1}/${new Date().getFullYear()}`;
+    req.body.admissionYear = new Date().getFullYear();
     const student = await Student.create(req.body);
-    res.status(200).send(student);
+    res.redirect(`/student/${student._id}`);
+    // res.status(200).send(student);
 };
 
 exports.resizeStudentImage = (req, res, next) => {
@@ -61,14 +66,14 @@ exports.resizeStudentImage = (req, res, next) => {
         "_" +
         req.body.grade +
         "_" +
-        req.body.rollNumber +
+        req.requestTime +
         ".jpeg";
 
     sharp(req.file.buffer)
         .resize(150, 150)
         .toFormat("jpeg")
         .jpeg({ quality: 95 })
-        .toFile(`public/images/${req.file.filename}`);
+        .toFile(`public/images/students/${req.file.filename}`);
     next();
 };
 
@@ -82,7 +87,7 @@ exports.viewStudent = async (req, res) => {
         student,
         studentFee,
         gradeFee,
-        months:months.slice(1),
+        months: months.slice(1),
     });
 };
 
@@ -95,7 +100,7 @@ exports.studentFeeUpdateForm = async (req, res) => {
         student,
         studentFee,
         gradeFee,
-        months,
+        months: months.slice(1),
     });
 };
 
@@ -111,7 +116,8 @@ exports.studentFeeUpdate = async (req, res) => {
     const updatedStudent = await Student.findByIdAndUpdate(req.params.id, {
         fee: data,
     });
-    res.status(200).send(updatedStudent);
+    // res.status(200).send(updatedStudent);
+    res.redirect(`/student/${req.params.id}`);
 };
 
 // ***** GRADE FEE CONTROLLERS *****
@@ -119,7 +125,7 @@ exports.studentFeeUpdate = async (req, res) => {
 exports.updateGradeFeeForm = (req, res) => {
     const grade = req.params.grade;
     const gradeFee = Fee.findOne({ grade });
-    res.status(200).render("updateGradeFee", {grade});
+    res.status(200).render("updateGradeFee", { grade });
 };
 
 exports.updateGradeFee = async (req, res) => {

@@ -23,38 +23,29 @@ const studentSchema = new mongoose.Schema({
     },
     admissionYear: {
         type: Number,
-        required: true,
     },
     grade: {
         type: String,
         required: true,
     },
-    rollNumber: {
-        type: String,
-        required: true,
-    },
+
     aadharNumber: {
         type: Number,
     },
     fatherName: {
         type: String,
-        required: true,
     },
     motherName: {
         type: String,
-        required: true,
     },
     address: {
         type: String,
-        required: true,
     },
     contact: {
         type: Number,
-        required: true,
     },
     alternateContact: {
         type: Number,
-        required: true,
     },
     image: { type: String, required: true },
     fee: {

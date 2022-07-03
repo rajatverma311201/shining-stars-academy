@@ -9,7 +9,7 @@ const feeSchema = new mongoose.Schema({
     development: Number,
     exam: Number,
     stationery: Number,
-    development:Number,
+    development: Number,
     transport: Number,
 });
 

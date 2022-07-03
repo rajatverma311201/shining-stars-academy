@@ -1,0 +1,56 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&display=swap");
+
+:root {
+    --color-primary: #00308f;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "JetBrains Mono", monospace;
+}
+table, th,td{
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td{
+    
+    padding: 0.75rem;
+
+    text-align: center;
+} 
+input[type='text']{
+    width: 5rem;
+}
+#paid[type='text']{
+    width: 2rem;
+}
+input[type='date']{
+    width: 6.5rem;
+}
+table{
+    margin: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+input[type='submit'] {
+    margin: 1rem;
+    color: var(--color-primary);
+    font-size: 1.25rem;
+    font-weight: 800;
+    padding: 0.5rem 1rem;
+    background-color: white;
+    border: 2.5px solid var(--color-primary);
+    border-color: var(--color-primary);
+    border-radius: 10px;
+    transition: 0.2s;
+}
+
+input[type='submit']:hover {
+    background-color: var(--color-primary);
+    color: white;
+    cursor: pointer;
+    transition: 0.2s;
+}

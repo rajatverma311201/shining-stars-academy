@@ -9,6 +9,20 @@
     </head>
     <body>
         <div class="container">
+            <div class="school">
+                <div class="school-logo">
+                    <a href="/grades">
+                        <img
+                            src="/images/school/logo-small.jpg"
+                            alt="school-logo"
+                        />
+                    </a>
+                </div>
+                <div class="school-name">
+                    <a href="/grades"> Shining Stars Academy </a>
+                </div>
+            </div>
+
             <h1 class="page-heading">Student Details</h1>
 
             <!--first container start -->
@@ -70,7 +84,7 @@
                     <div class="student-image-container">
                         <div class="student-image">
                             <img
-                                src="/images/2022-06-18T09-29-16.449Z__.jpeg"
+                                src="/images/students/<%= student.image %>"
                                 alt="<%= student.name %>"
                             />
                         </div>
@@ -122,33 +136,45 @@
                 </div>
             </div>
             <hr />
-            <!-- <div class="rollNumber-container">
-                <div class="rollNumber-heading field-heading">Roll No.</div>
-                <div class="rollNumber bold"><%= student.rollNumber %></div>
+            <div class="fee-update-btn-container">
+                <a href="/student/feeUpdate/<%= student._id %>"
+                    ><button>Click to Update Fee</button></a
+                >
             </div>
-
-            <div class="admissionYear-container">
-                <div class="admissionYear-heading field-heading">
-                    Admission Year
-                </div>
-                <div class="admissionYear bold">
-                    <%= student.admissionYear %>
-                </div>
-            </div> -->
-
-            <tr>
-                <th>Month</th>
-                <th>Receipt No.</th>
-                <th>Date</th>
-                <th>Tution Fee</th>
-                <th>Development</th>
-                <th>Computer</th>
-                <th>Stationery</th>
-                <th>Transport</th>
-                <th>Total</th>
-                <th>Paid</th>
-                <th>Balance</th>
-            </tr>
+            <table>
+                <div class="april-details">April</div>
+                <tr>
+                    <th>Receipt No.</th>
+                    <th>Date</th>
+                    <th>Admission</th>
+                    <th>Tution</th>
+                    <th>Transport</th>
+                    <th>Exam</th>
+                    <th>Development</th>
+                    <th>Computer</th>
+                    <th>Stationery</th>
+                    <th>Total</th>
+                    <th>Paid</th>
+                    <th>Balance</th>
+                </tr>
+                <tr>
+                    <% let aprilTotal =
+                    gradeFee.admission+gradeFee.tution+gradeFee.transport+gradeFee.exam+gradeFee.development+gradeFee.computer+gradeFee.stationery
+                    %>
+                    <td><%= studentFee["april"].receiptNumber %></td>
+                    <td><%= studentFee["april"].date %></td>
+                    <th><%= gradeFee.admission %></th>
+                    <th><%= gradeFee.tution %></th>
+                    <th><%= gradeFee.transport %></th>
+                    <th><%= gradeFee.exam %></th>
+                    <th><%= gradeFee.development %></th>
+                    <th><%= gradeFee.computer %></th>
+                    <th><%= gradeFee.stationery %></th>
+                    <th><%= aprilTotal %></th>
+                    <th><%= studentFee["april"].paid %></th>
+                    <th><%= aprilTotal - studentFee["april"].paid %></th>
+                </tr>
+            </table>
             <table>
                 <tr>
                     <th>Month</th>
@@ -161,29 +187,27 @@
                     <th>Balance</th>
                 </tr>
                 <tbody>
-                    <% months.forEach(month =>{%>
+                    <% let monthTotal = gradeFee.tution+gradeFee.transport %> <%
+                    months.forEach(month =>{%>
                     <tr>
-                        <td><%= month %></td>
+                        <td style="font-weight: bold"><%= month %></td>
                         <td>
                             <%= studentFee[month.toLowerCase()].receiptNumber %>
                         </td>
                         <td><%= studentFee[month.toLowerCase()].date %></td>
                         <td><%= gradeFee.tution %></td>
-                        <!-- <td><%= gradeFee.development %></td> -->
-                        <!-- <td><%= gradeFee.exam %></td> -->
+
                         <td><%= gradeFee.transport %></td>
-                        <td><%= gradeFee.total %></td>
+                        <td><%= monthTotal %></td>
                         <td><%= studentFee[month.toLowerCase()].paid %></td>
                         <td>
-                            0
+                            <%= monthTotal -
+                            studentFee[month.toLowerCase()].paid %>
                         </td>
                     </tr>
                     <%})%>
                 </tbody>
             </table>
-            <a href="/student/feeUpdate/<%= student._id %>"
-                ><button>Click to Update Fee</button></a
-            >
         </div>
     </body>
 </html>

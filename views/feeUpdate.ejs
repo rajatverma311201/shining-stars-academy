@@ -4,36 +4,94 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="/styles/feeBook.css" />
+        <link rel="stylesheet" href="/styles/feeUpdate.css" />
         <title>feeBook</title>
     </head>
     <body>
         <form action="/student/feeUpdate/<%= student._id %>" method="post">
+            <input type="submit" value="Submit" />
+
             <table>
                 <tr>
                     <th>Month</th>
                     <th>Receipt No.</th>
                     <th>Date</th>
-                    <th>Tution Fee</th>
-                    <th>Development Fee</th>
-                    <th>Exam Fee</th>
-                    <th>Transport Fee</th>
+                    <th>Admission</th>
+                    <th>Tution</th>
+                    <th>Transport</th>
+                    <th>Exam</th>
+                    <th>Computer</th>
+                    <th>Stationery</th>
+                    <th>Total</th>
+                    <th>Paid</th>
+                </tr>
+                <tr>
+                    <td style="font-weight: bold">April</td>
+                    <td>
+                        <input
+                            class="recno"
+                            type="text"
+                            name="receiptNumber"
+                            id="receiptNumber"
+                            value="<%= studentFee['april'].receiptNumber %>"
+                        />
+                    </td>
+                    <td>
+                        <input
+                            type="date"
+                            name="date"
+                            id=""
+                            value="<%= studentFee['april'].date %>"
+                        />
+                    </td>
+                    <td><%= gradeFee.admission %></td>
+                    <td><%= gradeFee.tution %></td>
+                    <td><%= gradeFee.transport %></td>
+                    <td><%= gradeFee.exam %></td>
+                    <td><%= gradeFee.computer %></td>
+                    <td><%= gradeFee.stationery %></td>
+                    <td><%= gradeFee.total %></td>
+                    <td>
+                        <input
+                            type="text"
+                            name="paid"
+                            id="paid"
+                            value="<%= studentFee['april'].paid %>"
+                        />
+                    </td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <th>Month</th>
+                    <th>Receipt No.</th>
+                    <th>Date</th>
+                    <th>Tution</th>
+                    <th>Transport</th>
                     <th>Total</th>
                     <th>Paid</th>
                 </tr>
                 <% months.forEach(month =>{ %>
                 <tr>
-                    <td><%= month %></td>
+                    <td style="font-weight: bold"><%= month %></td>
                     <td>
-                        <input type="text" name="receiptNumber" id="" value="<%= studentFee[month.toLowerCase()].receiptNumber %>"/>
+                        <input
+                            type="text"
+                            name="receiptNumber"
+                            id=""
+                            value="<%= studentFee[month.toLowerCase()].receiptNumber %>"
+                        />
                     </td>
                     <td>
-                        <input type="date" name="date" id="" value="<%= studentFee[month.toLowerCase()].date %>"/>
+                        <input
+                            type="date"
+                            name="date"
+                            id=""
+                            value="<%= studentFee[month.toLowerCase()].date %>"
+                        />
                     </td>
                     <td><%= gradeFee.tution %></td>
-                    <td><%= gradeFee.development %></td>
-                    <td><%= gradeFee.exam %></td>
-                    <td clas><%= gradeFee.transport %></td>
+                    <td><%= gradeFee.transport %></td>
                     <td><%= gradeFee.total %></td>
                     <td>
                         <input
@@ -46,7 +104,6 @@
                 </tr>
                 <%})%>
             </table>
-            <input type="submit" value="Submit" />
         </form>
 
         <script></script>

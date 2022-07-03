@@ -48,13 +48,10 @@
     ></script>
     <script>
         const login = async (username, password) => {
-            console.log("i am in");
             try {
                 const res = await axios({
                     method: "POST",
-                    url: (baseUrl =
-                        `${process.env.baseURL}/signin` ||
-                        "http://localhost:8000/signin"),
+                    url:"/signin",
                     data: {
                         username,
                         password,

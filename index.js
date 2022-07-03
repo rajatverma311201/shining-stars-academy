@@ -14,6 +14,8 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 app.use((req, res, next) => {
     req.requestTime = new Date().toISOString();
+        // console.log(process.env);
+
     // console.log(req.cookies);
     
     next();

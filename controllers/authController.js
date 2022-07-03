@@ -46,6 +46,7 @@ exports.login = async (req, res, next) => {
     }
 
     // 3) If everything ok, send token to client
+    // console.log(process.env.baseURL);
     createSendToken(admin, 200, res);
 };
 

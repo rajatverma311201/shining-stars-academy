@@ -16,7 +16,8 @@
 
 .school-name {
     border-radius: 10px;
-    margin: 2.5rem;
+    margin: 2rem;
+    margin-top: 0.5rem;
     padding: 0.5rem;
     font-size: 4rem;
     font-weight: 800;

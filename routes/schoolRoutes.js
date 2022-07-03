@@ -24,6 +24,14 @@ router
         viewController.resizeStudentImage,
         viewController.addStudent
     );
+
+router
+    .get("/student/update/:id", viewController.updateStudentForm)
+    .post(
+        "/student/update/:id",
+        viewController.resizeStudentImage,
+        viewController.updateStudent
+    );
 router
     .get("/updateGradeFee/:grade", viewController.updateGradeFeeForm)
     .post("/updateGradeFee/:grade", viewController.updateGradeFee);

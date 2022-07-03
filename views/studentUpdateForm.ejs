@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="/styles/studentForm.css" />
+        <title>Student Update</title>
+    </head>
+    <body>
+        <div class="student">
+            <h1 class="page-heading">Enter the Details of Student</h1>
+            <form
+                action="/student/update/<%= student._id %>"
+                method="POST"
+                enctype="multipart/form-data"
+            >
+                <!-- Name  -->
+                <div class="name-heading">Enter Name of Student</div>
+                <div class="name">
+                    <div class="fname">
+                        <label for="firstname">First Name :&nbsp;</label>
+                        <input
+                            required
+                            type="text"
+                            id="firstName"
+                            name="firstName"
+                            placeholder="Enter First Name"
+                            value="<%= student.firstName %>"
+                        />
+                    </div>
+                    <div class="lname">
+                        <label for="lastname">Last Name :&nbsp;</label>
+                        <input
+                            required
+                            type="text"
+                            id="lastName"
+                            name="lastName"
+                            placeholder="Enter Last Name"
+                            value="<%= student.lastName %>"
+                        />
+                    </div>
+                </div>
+
+                <!-- aadhar number  -->
+                <div class="aadharNumber">
+                    <label for="aadharNumber">Aadhar No.</label>
+                    <input
+                        type="text"
+                        id="aadharNumber"
+                        name="aadharNumber"
+                        placeholder="Enter Aadhar No."
+                        value="<%= student.aadharNumber %>"
+                    />
+                </div>
+                <!-- date of birth  -->
+                <div class="dob-heading">
+                    Date of Birth
+                    <div class="dob">
+                        <input
+                            required
+                            type="date"
+                            id="dob"
+                            name="dob"
+                            value="<%= student.dob %>"
+                        />
+                    </div>
+                </div>
+                <!-- gender  -->
+                <div class="gender-heading">
+                    Gender
+
+                    <div class="gender">
+                        <select
+                            name="gender"
+                            id="gender"
+                            value="<%= student.gender %>"
+                        >
+                            <option value="">Select Gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Others">Others</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- grade  -->
+                <div class="grade-heading">
+                    Grade
+                    <div class="grade">
+                        <!-- <label for="grade">Grade : </label>
+                        <input required type="text" id="grade" name="grade" /> -->
+
+                        <select
+                            name="grade"
+                            id="grade"
+                            value="<%= student.grade %>"
+                            required
+                        >
+                            <option value="">Choose Grade</option>
+                            <option value="nur">NURSERY</option>
+                            <option value="lkg">LKG</option>
+                            <option value="ukg">UKG</option>
+                            <option value="i">I</option>
+                            <option value="ii">II</option>
+                            <option value="iii">III</option>
+                            <option value="iv">IV</option>
+                            <option value="v">V</option>
+                            <option value="vi">VI</option>
+                            <option value="vii">VII</option>
+                            <option value="viii">VIII</option>
+                            <option value="ix">IX</option>
+                            <option value="x">X</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Parent's Name  -->
+                <!-- motherName -->
+                <div class="parent-heading">Enter Name of Parents</div>
+                <div class="parents">
+                    <div class="motherName">
+                        <label for="motherName">Mother :&nbsp;</label>
+                        <input
+                            required
+                            type="text"
+                            id="motherName"
+                            name="motherName"
+                            value="<%= student.motherName %>"
+                            placeholder="Enter Mother's Name"
+                        />
+                    </div>
+
+                    <!-- fatherName -->
+                    <div class="fatherName">
+                        <label for="fatherName">Father :&nbsp;</label>
+                        <input
+                            required
+                            type="text"
+                            id="fatherName"
+                            name="fatherName"
+                            value="<%= student.fatherName%>"
+                            placeholder="Enter Father's Name"
+                        />
+                    </div>
+                </div>
+
+                <!-- contact -->
+                <!-- Enter Contact No. -->
+                <div class="contact-heading">Enter Contact No.</div>
+                <div class="contact-container">
+                    <div class="contact">
+                        <label for="contact">Contact :&nbsp;</label>
+                        <input
+                            required
+                            type="text"
+                            id="contact"
+                            name="contact"
+                            value="<%= student.contact %>"
+                            placeholder="Enter Contact No."
+                        />
+                    </div>
+
+                    <!-- alternateContact -->
+                    <div class="alternateContact">
+                        <label for="alternateContact">Alternate :&nbsp;</label>
+                        <input
+                            type="text"
+                            id="alternateContact"
+                            name="alternateContact"
+                            value="<%= student.alternateContact %>"
+                            placeholder="Enter Alternate Contact"
+                        />
+                    </div>
+                </div>
+                <!-- address  -->
+                <div class="address">
+                    <label for="address">Address </label>
+                    <input
+                        type="text"
+                        id="address"
+                        name="address"
+                        value="<%= student.address %>"
+                        placeholder="Enter Address"
+                    />
+                </div>
+                <!-- student photo  -->
+                <div class="image-heading">
+                    Choose Photo of the Student
+                    <div class="image">
+                        <input
+                            type="file"
+                            name="image"
+                            id="image"
+                            accept="image/*"
+                            onchange="loadFile(event)"
+                        />
+                        <img
+                            id="output"
+                            width="150"
+                            height="150"
+                            style="display: none"
+                        />
+                    </div>
+                </div>
+                <div class="submit">
+                    <input type="submit" value="Submit" />
+                </div>
+            </form>
+        </div>
+
+        <script>
+            var loadFile = function (event) {
+                var image = document.getElementById("output");
+                image.src = URL.createObjectURL(event.target.files[0]);
+                image.style.display = "inline";
+            };
+        </script>
+    </body>
+</html>

@@ -14,7 +14,7 @@ body {
     margin: 0.25rem;
     padding: 0.25rem;
 }
-.fee-update-btn-container{
+.fee-update-btn-container,.student-update-btn-container{
     display: flex;
     justify-content: center;
 }
@@ -143,6 +143,12 @@ hr {
     display: flex;
     justify-content: center;
     font-weight: bold;
+}
+
+.update{
+    margin: 1rem;
+    display: flex;
+    justify-content: space-evenly;
 }
 button {
     /* margin: 1rem; */

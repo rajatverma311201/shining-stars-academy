@@ -59,6 +59,18 @@ exports.addStudent = async (req, res) => {
     // res.status(200).send(student);
 };
 
+exports.updateStudentForm = async (req, res, next) => {
+    const student = await Student.findById(req.params.id);
+    res.status(200).render("studentUpdateForm", { student });
+};
+
+exports.updateStudent = async (req, res, next) => {
+    const id = req.params.id;
+    req.body.image = req.file.filename;
+
+    const student = await Student.findByIdAndUpdate(id, req.body);
+    res.redirect(`/student/${id}`);
+};
 exports.resizeStudentImage = (req, res, next) => {
     if (!req.file) return next();
     req.file.filename =
@@ -66,7 +78,6 @@ exports.resizeStudentImage = (req, res, next) => {
         "_" +
         req.body.grade +
         "_" +
-        req.requestTime +
         ".jpeg";
 
     sharp(req.file.buffer)

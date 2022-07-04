@@ -168,14 +168,15 @@
                     <th>Balance</th>
                 </tr>
                 <tr>
-                    <% let aprilTotal =
-                    gradeFee.admission+gradeFee.tution+gradeFee.transport+gradeFee.exam+gradeFee.development+gradeFee.computer+gradeFee.stationery
-                    %>
+                    <% let aprilTotal = studentFee["april"].admission +
+                    studentFee["april"].transport + gradeFee.tution +
+                    gradeFee.exam + gradeFee.development + gradeFee.computer +
+                    gradeFee.stationery %>
                     <td><%= studentFee["april"].receiptNumber %></td>
                     <td><%= studentFee["april"].date %></td>
-                    <th><%= gradeFee.admission %></th>
+                    <td><%= studentFee["april"].admission %></td>
                     <th><%= gradeFee.tution %></th>
-                    <th><%= gradeFee.transport %></th>
+                    <td><%= studentFee["april"].transport %></td>
                     <th><%= gradeFee.exam %></th>
                     <th><%= gradeFee.development %></th>
                     <th><%= gradeFee.computer %></th>
@@ -197,8 +198,7 @@
                     <th>Balance</th>
                 </tr>
                 <tbody>
-                    <% let monthTotal = gradeFee.tution+gradeFee.transport %> <%
-                    months.forEach(month =>{%>
+                    <% months.forEach(month =>{%>
                     <tr>
                         <td style="font-weight: bold"><%= month %></td>
                         <td>
@@ -208,10 +208,13 @@
                         <td><%= gradeFee.tution %></td>
 
                         <td><%= gradeFee.transport %></td>
-                        <td><%= monthTotal %></td>
+                        <td>
+                            <%= studentFee[month.toLowerCase()].transport +
+                            gradeFee.tution %>
+                        </td>
                         <td><%= studentFee[month.toLowerCase()].paid %></td>
                         <td>
-                            <%= monthTotal -
+                            <%= studentFee[month.toLowerCase()].transport + gradeFee.tution -
                             studentFee[month.toLowerCase()].paid %>
                         </td>
                     </tr>

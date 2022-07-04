@@ -1,16 +1,12 @@
 const mongoose = require("mongoose");
 
 const feeSchema = new mongoose.Schema({
-    grade: String,
-
-    admission: Number,
-    computer: Number,
-    tution: Number,
-    development: Number,
-    exam: Number,
-    stationery: Number,
-    development: Number,
-    transport: Number,
+    grade: { type: String, default: 0 },
+    computer: { type: Number, default: 0 },
+    tution: { type: Number, default: 0 },
+    development: { type: Number, default: 0 },
+    exam: { type: Number, default: 0 },
+    stationery: { type: Number, default: 0 },
 });
 
 const Fee = mongoose.model("Fee", feeSchema);

@@ -8,6 +8,20 @@
         <title>Grade Fee Update</title>
     </head>
     <body>
+        <div class="school">
+            <div class="school-logo">
+                <a href="/grades">
+                    <img
+                        src="/images/school/logo-small.jpg"
+                        alt="school-logo"
+                        width="100px"
+                    />
+                </a>
+            </div>
+            <div class="school-name">
+                <a href="/grades"> Shining Stars Academy </a>
+            </div>
+        </div>
         <form action="/student/feeUpdate/<%= student._id %>" method="post">
             <input type="submit" value="Submit" />
 
@@ -26,6 +40,10 @@
                     <th>Paid</th>
                 </tr>
                 <tr>
+                    <% let aprilTotal = studentFee["april"].admission +
+                    studentFee["april"].transport + gradeFee.tution +
+                    gradeFee.exam + gradeFee.development + gradeFee.computer +
+                    gradeFee.stationery %>
                     <td style="font-weight: bold">April</td>
                     <td>
                         <input
@@ -40,17 +58,31 @@
                         <input
                             type="date"
                             name="date"
-                            id=""
+                            id="date"
                             value="<%= studentFee['april'].date %>"
                         />
                     </td>
-                    <td><%= gradeFee.admission %></td>
+                    <td>
+                        <input
+                            type="text"
+                            name="admission"
+                            id="admission"
+                            value="<%= studentFee['april'].admission %>"
+                        />
+                    </td>
                     <td><%= gradeFee.tution %></td>
-                    <td><%= gradeFee.transport %></td>
+                    <td>
+                        <input
+                            type="text"
+                            name="transport"
+                            id="transport"
+                            value="<%= studentFee['april'].transport %>"
+                        />
+                    </td>
                     <td><%= gradeFee.exam %></td>
                     <td><%= gradeFee.computer %></td>
                     <td><%= gradeFee.stationery %></td>
-                    <td><%= gradeFee.total %></td>
+                    <td><%= aprilTotal %></td>
                     <td>
                         <input
                             type="text"
@@ -91,8 +123,18 @@
                         />
                     </td>
                     <td><%= gradeFee.tution %></td>
-                    <td><%= gradeFee.transport %></td>
-                    <td><%= gradeFee.total %></td>
+                    <td>
+                        <input
+                            type="text"
+                            name="transport"
+                            id="transport"
+                            value="<%= studentFee['april'].transport %>"
+                        />
+                    </td>
+                    <td>
+                        <%= studentFee[month.toLowerCase()].transport +
+                        gradeFee.tution %>
+                    </td>
                     <td>
                         <input
                             type="text"

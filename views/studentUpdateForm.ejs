@@ -71,12 +71,10 @@
                     Gender
 
                     <div class="gender">
-                        <select
-                            name="gender"
-                            id="gender"
-                            value="<%= student.gender %>"
-                        >
-                            <option value="">Select Gender</option>
+                        <select name="gender" id="gender">
+                            <option value="<%= student.gender %>">
+                                <%= student.gender %>
+                            </option>
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>
                             <option value="Others">Others</option>
@@ -91,14 +89,11 @@
                         <!-- <label for="grade">Grade : </label>
                         <input required type="text" id="grade" name="grade" /> -->
 
-                        <select
-                            name="grade"
-                            id="grade"
-                            value="<%= student.grade %>"
-                            required
-                        >
-                            <option value="">Choose Grade</option>
-                            <option value="nur">NURSERY</option>
+                        <select name="grade" id="grade" required>
+                            <option value="<%= student.grade %>">
+                                <%= student.grade.toUpperCase() %>
+                            </option>
+                            <option value="nur">NUR</option>
                             <option value="lkg">LKG</option>
                             <option value="ukg">UKG</option>
                             <option value="i">I</option>

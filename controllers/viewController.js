@@ -117,11 +117,22 @@ exports.studentFeeUpdateForm = async (req, res) => {
 
 exports.studentFeeUpdate = async (req, res) => {
     let data = {};
-    for (let i = 0; i < 12; i++) {
+    // console.log(req.body.admission);
+
+    data["april"] = {
+        receiptNumber: req.body.receiptNumber[0],
+        date: req.body.date[0],
+        paid: Number(req.body.paid[0]),
+        admission: Number(req.body.admission),
+        transport: Number(req.body.transport[0]),
+    };
+
+    for (let i = 1; i < 12; i++) {
         data[months[i].toLowerCase()] = {
             receiptNumber: req.body.receiptNumber[i],
             date: req.body.date[i],
             paid: Number(req.body.paid[i]),
+            transport: Number(req.body.transport[i]),
         };
     }
     const updatedStudent = await Student.findByIdAndUpdate(req.params.id, {
@@ -136,21 +147,25 @@ exports.studentFeeUpdate = async (req, res) => {
 exports.updateGradeFeeForm = (req, res) => {
     const grade = req.params.grade;
     const gradeFee = Fee.findOne({ grade });
-    res.status(200).render("updateGradeFee", { grade });
+    res.status(200).render("updateGradeFee", { grade, gradeFee });
 };
 
 exports.updateGradeFee = async (req, res) => {
     const grade = req.params.grade;
-    const { tution, development, exam, transport } = req.body;
+    const { tution, development, exam, transport, computer, stationery } =
+        req.body;
     await Fee.findOneAndDelete({ grade });
     const newFee = await Fee.create({
         grade,
         tution,
+        computer,
+        stationery,
         development,
         exam,
         transport,
     });
-    res.status(200).send(newFee);
+    // res.status(200).send(newFee);
+    res.redirect(`/grade/${grade}`);
 };
 
 exports.viewGrades = async (req, res) => {
@@ -184,6 +199,7 @@ exports.viewGrades = async (req, res) => {
 exports.viewGradeStudents = async (req, res) => {
     const grade = req.params.grade;
     const students = await Student.find({ grade });
+    const gradeFee = await Fee.findOne({ grade: grade });
 
-    res.status(200).render("grade", { students, grade });
+    res.status(200).render("grade", { students, grade, gradeFee });
 };

@@ -14,6 +14,9 @@ body {
     padding: 1rem;
 }
 
+a {
+    text-decoration: none;
+}
 .grade-container {
     margin: 1rem 2rem;
     background-color: var(--color-primary);
@@ -26,14 +29,50 @@ body {
     text-align: center;
     color: white;
 }
+.school {
+    padding: 0.25rem 1.5rem;
+    margin: 0.1rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 1rem;
+    /* background-color: var(--color-primary); */
+}
+.school a:hover,
+.school a:active,
+.school a:visited {
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+.school-name {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    /* color: #fff; */
+}
 
 .fee-container {
     margin: 2rem;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-
+.current-fee {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+.current-fee > div {
+    background-color: var(--color-primary);
+    padding: 0.25rem 0.5rem;
+    color: white;
+    border-radius: 5px;
+}
 .btn-fee {
     color: var(--color-primary);
     font-size: 1.25rem;

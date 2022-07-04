@@ -177,3 +177,8 @@ input:hover,
 .submit {
     margin: 1rem auto;
 }
+
+
+.gender-heading, .grade-heading{
+    margin-bottom: 1rem;
+}

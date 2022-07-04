@@ -9,33 +9,34 @@
     box-sizing: border-box;
     font-family: "JetBrains Mono", monospace;
 }
-table, th,td{
+table,
+th,
+td {
     border: 1px solid black;
     border-collapse: collapse;
 }
-th, td{
-    
+th,
+td {
     padding: 0.75rem;
 
     text-align: center;
-} 
-input[type='text']{
+}
+input[type="text"] {
     width: 5rem;
 }
-#paid[type='text']{
-    width: 2rem;
+#paid[type="text"] {
+    width: 4rem;
 }
-input[type='date']{
+input[type="date"] {
     width: 6.5rem;
 }
-table{
+table {
     margin: 1rem;
     margin-left: auto;
     margin-right: auto;
 }
 
-
-input[type='submit'] {
+input[type="submit"] {
     margin: 1rem;
     color: var(--color-primary);
     font-size: 1.25rem;
@@ -48,9 +49,36 @@ input[type='submit'] {
     transition: 0.2s;
 }
 
-input[type='submit']:hover {
+input[type="submit"]:hover {
     background-color: var(--color-primary);
     color: white;
     cursor: pointer;
     transition: 0.2s;
+}
+
+a {
+    text-decoration: none;
+}
+.school {
+    padding: 0.25rem 1.5rem;
+    margin: 0.1rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 1rem;
+    /* background-color: var(--color-primary); */
+}
+.school a:hover,
+.school a:active,
+.school a:visited {
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+.school-name {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    /* color: #fff; */
 }

@@ -14,31 +14,42 @@ body {
     padding: 1rem;
 }
 
-.school-name {
-    border-radius: 10px;
-    margin: 2.5rem;
-    padding: 0.5rem;
-    font-size: 4rem;
-    font-weight: 800;
-    text-align: center;
-    color: #ffffff;
-    background: var(--color-primary);
-    text-shadow: 0 1px 0 #cccccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9,
-        0 5px 0 #aaa, 0 6px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1),
-        0 1px 3px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2),
-        0 5px 10px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.2),
-        0 20px 20px rgba(0, 0, 0, 0.15);
-    color: #ffffff;
-    background: var(--color-primary);
+a {
+    text-decoration: none;
+}
+.school {
+    padding: 0.25rem 1.5rem;
+    margin: 0.1rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 1rem;
+    /* background-color: var(--color-primary); */
+}
+.school a:hover,
+.school a:active,
+.school a:visited {
+    color: var(--color-primary);
+    text-decoration: none;
 }
 
-.add-student-container, .fee-container {
-    margin: 2rem;
+.school-name {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    /* color: #fff; */
+}
+
+.add-student-container,
+.fee-container {
+    margin: 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.btn-add-student, .btn-fee {
+.btn-add-student,
+.btn-fee {
     color: var(--color-primary);
     font-size: 1.25rem;
     font-weight: 800;
@@ -51,7 +62,8 @@ body {
     transition: 0.2s;
 }
 
-.btn-add-student:hover, .btn-fee:hover {
+.btn-add-student:hover,
+.btn-fee:hover {
     background-color: var(--color-primary);
     color: white;
     cursor: pointer;

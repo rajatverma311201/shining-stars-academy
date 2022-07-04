@@ -15,6 +15,20 @@
         <title>Grade <%= grade %> | Shining Stars Academy</title>
     </head>
     <body>
+        <div class="school">
+            <div class="school-logo">
+                <a href="/grades">
+                    <img
+                        src="/images/school/logo-small.jpg"
+                        alt="school-logo"
+                        width="100px"
+                    />
+                </a>
+            </div>
+            <div class="school-name">
+                <a href="/grades"> Shining Stars Academy </a>
+            </div>
+        </div>
         <div class="students-list">
             <div class="grade-container">
                 <div class="grade"><%= grade.toUpperCase() %></div>
@@ -25,9 +39,24 @@
                 </div>
             </div>
             <div class="fee-container">
-                <a class="link-fee" href="/updategradefee/<%= grade %>">
-                    <button class="btn-fee">Change Fee Structure</button>
-                </a>
+                <div class="current-fee">
+                    <div class="tution">Tution : <%= gradeFee.tution %></div>
+                    <div class="exam">Exam : <%= gradeFee.exam %></div>
+                    <div class="computer">
+                        Computer : <%= gradeFee.computer %>
+                    </div>
+                    <div class="stationery">
+                        Stationery : <%= gradeFee.stationery %>
+                    </div>
+                    <div class="development">
+                        Development : <%= gradeFee.development %>
+                    </div>
+                </div>
+                <div>
+                    <a class="link-fee" href="/updategradefee/<%= grade %>">
+                        <button class="btn-fee">Change Fee Structure</button>
+                    </a>
+                </div>
             </div>
             <% students.forEach(student=>{ %>
 

@@ -14,19 +14,16 @@ body {
     margin: 0.25rem;
     padding: 0.25rem;
 }
-.fee-update-btn-container,.student-update-btn-container{
+
+a {
+    text-decoration: none;
+}
+.fee-update-btn-container,
+.student-update-btn-container {
     display: flex;
     justify-content: center;
 }
-a{
-    text-decoration: none;
-}
 
-a:hover,a:active,
-a:visited{
-    padding: 0;
-    color: var(--color-primary);
-}
 .school {
     padding: 0.5rem 1.5rem;
     margin: 0.5rem;
@@ -36,6 +33,12 @@ a:visited{
     justify-content: space-evenly;
     gap: 1rem;
     /* background-color: var(--color-primary); */
+}
+.school a:hover,
+.school a:active,
+.school a:visited {
+    color: var(--color-primary);
+    text-decoration: none;
 }
 
 .school-name {
@@ -139,13 +142,13 @@ hr {
     text-align: center;
 }
 
-.april-details{
+.april-details {
     display: flex;
     justify-content: center;
     font-weight: bold;
 }
 
-.update{
+.update {
     margin: 1rem;
     display: flex;
     justify-content: space-evenly;

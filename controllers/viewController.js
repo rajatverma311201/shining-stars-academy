@@ -148,15 +148,14 @@ exports.updateGradeFeeForm = (req, res) => {
 
 exports.updateGradeFee = async (req, res) => {
     const grade = req.params.grade;
-    const { tution, development,transport, computer} =
-        req.body;
+    const { tution, development, exam, computer } = req.body;
     await Fee.findOneAndDelete({ grade });
     const newFee = await Fee.create({
         grade,
         tution,
         computer,
         development,
-        transport,
+        exam,
     });
     res.redirect(`/grade/${grade}`);
 };

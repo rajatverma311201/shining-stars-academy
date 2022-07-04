@@ -52,27 +52,21 @@ exports.login = async (req, res, next) => {
 
 exports.protect = async (req, res, next) => {
     // 1) Getting token and check of it's there
-    let token;
+    let token = req.cookies.jwt;
     if (!token) {
-        return res.status(404).json({
-            status: "fail",
-            message: "You are not Logged in, Please Log In to Continue",
-        });
+        return res.redirect("/signin");
     }
 
     // 2) Verification token
     const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
 
     // 3) Check if user still exists
-    const currentUser = await User.findById(decoded.id);
+    const currentUser = await Admin.findById(decoded.id);
     if (!currentUser) {
-        return res.status(404).json({
-            status: "fail",
-            message: "user does not exist",
-        });
+        return res.redirect("/signin");
     }
 
     // GRANT ACCESS TO PROTECTED ROUTE
-    req.user = currentUser;
+    // req.locals.user = currentUser;
     next();
 };

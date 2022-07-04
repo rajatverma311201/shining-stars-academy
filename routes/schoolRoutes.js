@@ -8,12 +8,13 @@ const router = express.Router();
 // router.post("/", authController.login);
 
 // Protect all routes after this middleware
-// router.use(authController.protect);
 
 router.get("/", viewController.home);
 router
     .get("/signin", viewController.signInForm)
     .post("/signin", authController.login);
+
+router.use(authController.protect);
 router.get("/grades", viewController.viewGrades);
 router.get("/grade/:grade", viewController.viewGradeStudents);
 router.get("/student/:id", viewController.viewStudent);

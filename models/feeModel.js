@@ -6,7 +6,6 @@ const feeSchema = new mongoose.Schema({
     tution: { type: Number, default: 0 },
     development: { type: Number, default: 0 },
     exam: { type: Number, default: 0 },
-    stationery: { type: Number, default: 0 },
 });
 
 const Fee = mongoose.model("Fee", feeSchema);

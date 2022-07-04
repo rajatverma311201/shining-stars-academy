@@ -5,14 +5,7 @@ const studentSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    firstName: {
-        type: String,
-        required: true,
-    },
-    lastName: {
-        type: String,
-        required: true,
-    },
+    name: { type: String, required: true },
     dob: {
         type: String,
         required: true,
@@ -57,6 +50,10 @@ const studentSchema = new mongoose.Schema({
                 default: 0,
             },
             transport: {
+                type: Number,
+                default: 0,
+            },
+            stationery: {
                 type: Number,
                 default: 0,
             },

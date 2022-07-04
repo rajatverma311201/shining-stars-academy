@@ -16,7 +16,9 @@ body {
 label {
     font-weight: 800;
 }
-
+.star {
+    color: red;
+}
 .page-heading {
     font-weight: 800;
     width: 100%;
@@ -31,7 +33,6 @@ label {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
 }
 form {
     width: 100%;
@@ -149,7 +150,7 @@ input[type="text"] {
     border: none;
     border-bottom: 2.5px solid rgb(190, 190, 190);
     padding: 0.25rem;
-   
+
     /* background-color: rgba(60, 164, 255, 0.057); */
     transition: 0.1s;
 }
@@ -178,7 +179,7 @@ input:hover,
     margin: 1rem auto;
 }
 
-
-.gender-heading, .grade-heading{
+.gender-heading,
+.grade-heading {
     margin-bottom: 1rem;
 }

@@ -43,7 +43,7 @@
                     <% let aprilTotal = studentFee["april"].admission +
                     studentFee["april"].transport + gradeFee.tution +
                     gradeFee.exam + gradeFee.development + gradeFee.computer +
-                    gradeFee.stationery %>
+                    studentFee["april"].stationery %>
                     <td style="font-weight: bold">April</td>
                     <td>
                         <input
@@ -81,7 +81,14 @@
                     </td>
                     <td><%= gradeFee.exam %></td>
                     <td><%= gradeFee.computer %></td>
-                    <td><%= gradeFee.stationery %></td>
+                    <td>
+                        <input
+                            type="text"
+                            name="stationery"
+                            id="stationery"
+                            value="<%= studentFee['april'].stationery %>"
+                        />
+                    </td>
                     <td><%= aprilTotal %></td>
                     <td>
                         <input

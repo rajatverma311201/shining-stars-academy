@@ -171,7 +171,7 @@
                     <% let aprilTotal = studentFee["april"].admission +
                     studentFee["april"].transport + gradeFee.tution +
                     gradeFee.exam + gradeFee.development + gradeFee.computer +
-                    gradeFee.stationery %>
+                    studentFee["april"].stationery %>
                     <td><%= studentFee["april"].receiptNumber %></td>
                     <td><%= studentFee["april"].date %></td>
                     <td><%= studentFee["april"].admission %></td>
@@ -180,7 +180,7 @@
                     <th><%= gradeFee.exam %></th>
                     <th><%= gradeFee.development %></th>
                     <th><%= gradeFee.computer %></th>
-                    <th><%= gradeFee.stationery %></th>
+                    <th><%= studentFee["april"].stationery %></th>
                     <th><%= aprilTotal %></th>
                     <th><%= studentFee["april"].paid %></th>
                     <th><%= aprilTotal - studentFee["april"].paid %></th>

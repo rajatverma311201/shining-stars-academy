@@ -39,11 +39,6 @@ exports.home = (req, res) => {
 exports.signInForm = (req, res) => {
     res.status(200).render("signIn");
 };
-
-// exports.signIn = (req, res) => {
-//     res.send(req.body);
-// };
-
 exports.addStudentForm = (req, res) => {
     res.status(200).render("studentForm");
 };
@@ -124,6 +119,7 @@ exports.studentFeeUpdate = async (req, res) => {
         date: req.body.date[0],
         paid: Number(req.body.paid[0]),
         admission: Number(req.body.admission),
+        stationery: Number(req.body.stationery),
         transport: Number(req.body.transport[0]),
     };
 
@@ -164,7 +160,6 @@ exports.updateGradeFee = async (req, res) => {
         exam,
         transport,
     });
-    // res.status(200).send(newFee);
     res.redirect(`/grade/${grade}`);
 };
 
@@ -181,8 +176,7 @@ exports.viewGrades = async (req, res) => {
             grade: grade.toLowerCase(),
             gender: "Male",
         });
-        // const girls = girlsList.length;
-        // const boys = boysList.length;
+
         obj["grade"] = grade;
         obj["girls"] = girlsList.length;
         obj["boys"] = boysList.length;

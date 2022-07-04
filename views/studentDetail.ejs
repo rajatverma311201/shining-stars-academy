@@ -6,8 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="/styles/studentDetails.css" />
         <title>
-            <%= student.firstName.toUpperCase() + " " +
-            student.lastName.toUpperCase() %>
+            <%= student.name.toUpperCase() %>
         </title>
     </head>
     <body>
@@ -67,8 +66,7 @@
                         <div class="name-container">
                             <div class="name-heading field-heading">Name</div>
                             <div class="name bold">
-                                <%= student.firstName.toUpperCase() + " " +
-                                student.lastName.toUpperCase() %>
+                                <%= student.name.toUpperCase() %>
                             </div>
                         </div>
                         <div class="aadharNumber-container">

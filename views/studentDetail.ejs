@@ -5,12 +5,12 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="/styles/studentDetails.css" />
-        <title>
-            <%= student.name.toUpperCase() %>
-        </title>
+        <title><%= student.name.toUpperCase() %></title>
     </head>
     <body>
         <div class="container">
+            <% const grade = student.grade; if([ "NUR", "LKG", "UKG", "I", "II",
+            "III", "IV", "V" ].includes(grade.toUpperCase())){ %>
             <div class="school">
                 <div class="school-logo">
                     <a href="/grades">
@@ -24,6 +24,14 @@
                     <a href="/grades"> Shining Stars Academy </a>
                 </div>
             </div>
+            <% } else{ %>
+
+            <div class="school">
+                <div class="school-name">
+                    <a href="/grades"> Shining Stars Classes </a>
+                </div>
+            </div>
+            <% } %>
 
             <h1 class="page-heading">Student Details</h1>
 
@@ -85,7 +93,7 @@
                     <div class="student-image-container">
                         <div class="student-image">
                             <img
-                                src="/images/students/<%= student.image %>"
+                                src="<%= student.image %>"
                                 alt="<%= student.name %>"
                             />
                         </div>
@@ -205,14 +213,17 @@
                         <td><%= studentFee[month.toLowerCase()].date %></td>
                         <td><%= gradeFee.tution %></td>
 
-                        <td><%= gradeFee.transport %></td>
+                        <td>
+                            <%= studentFee[month.toLowerCase()].transport %>
+                        </td>
                         <td>
                             <%= studentFee[month.toLowerCase()].transport +
                             gradeFee.tution %>
                         </td>
                         <td><%= studentFee[month.toLowerCase()].paid %></td>
                         <td>
-                            <%= studentFee[month.toLowerCase()].transport + gradeFee.tution -
+                            <%= studentFee[month.toLowerCase()].transport +
+                            gradeFee.tution -
                             studentFee[month.toLowerCase()].paid %>
                         </td>
                     </tr>

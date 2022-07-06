@@ -1,6 +1,7 @@
 const express = require("express");
 const authController = require("./../controllers/authController");
 const viewController = require("./../controllers/viewController");
+const fileUploadController = require("./../controllers/fileUploadController");
 
 const router = express.Router();
 
@@ -22,7 +23,9 @@ router
     .get("/studentForm", viewController.addStudentForm)
     .post(
         "/studentForm",
-        viewController.resizeStudentImage,
+        fileUploadController.resizeStudentImage,
+        fileUploadController.uploadFile,
+        fileUploadController.generateURL,
         viewController.addStudent
     );
 
@@ -30,7 +33,9 @@ router
     .get("/student/update/:id", viewController.updateStudentForm)
     .post(
         "/student/update/:id",
-        viewController.resizeStudentImage,
+        fileUploadController.resizeStudentImage,
+        fileUploadController.uploadFile,
+        fileUploadController.generateURL,
         viewController.updateStudent
     );
 router

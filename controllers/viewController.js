@@ -1,7 +1,7 @@
-const sharp = require("sharp");
-
+const fs = require("fs");
 const Student = require("../models/studentModel");
 const Fee = require("../models/feeModel");
+
 const months = [
     "April",
     "May",
@@ -44,43 +44,34 @@ exports.addStudentForm = (req, res) => {
 };
 exports.addStudent = async (req, res) => {
     // res.status(200).render("studentForm");
-    req.body.image = req.file.filename;
+    req.body.image = req.body.studentImage;
     const allStudents = await Student.find();
     const num = allStudents.length;
     req.body.srNumber = `${num + 1}/${new Date().getFullYear()}`;
     req.body.admissionYear = new Date().getFullYear();
     const student = await Student.create(req.body);
+
+    setTimeout(() => {
+        if(`public/images/students/${req.file.filename}`)
+        fs.unlink(`public/images/students/${req.file.filename}`, (err) => {
+            if (err) console.log(err);
+        });
+    }, 1*60*60*1000);
     res.redirect(`/student/${student._id}`);
-    // res.status(200).send(student);
 };
 
 exports.updateStudentForm = async (req, res, next) => {
     const student = await Student.findById(req.params.id);
+
     res.status(200).render("studentUpdateForm", { student });
 };
 
 exports.updateStudent = async (req, res, next) => {
     const id = req.params.id;
-    req.body.image = req.file.filename;
+    req.body.image = req.body.studentImage;
 
     const student = await Student.findByIdAndUpdate(id, req.body);
     res.redirect(`/student/${id}`);
-};
-exports.resizeStudentImage = (req, res, next) => {
-    if (!req.file) return next();
-    req.file.filename =
-        new Date().toISOString().replace(/:/g, "-") +
-        "_" +
-        req.body.grade +
-        "_" +
-        ".jpeg";
-
-    sharp(req.file.buffer)
-        .resize(150, 150)
-        .toFormat("jpeg")
-        .jpeg({ quality: 95 })
-        .toFile(`public/images/students/${req.file.filename}`);
-    next();
 };
 
 exports.viewStudent = async (req, res) => {

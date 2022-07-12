@@ -1,6 +1,5 @@
 const fs = require("fs");
 const Student = require("../models/studentModel");
-const Fee = require("../models/feeModel");
 
 const months = [
     "April",
@@ -44,7 +43,9 @@ exports.addStudentForm = (req, res) => {
 };
 exports.addStudent = async (req, res) => {
     // res.status(200).render("studentForm");
-    req.body.image = req.body.studentImage;
+    // req.body.image = req.body.studentImage;
+    req.body.image = `https://drive.google.com/uc?id=${req.file.fileId}`;
+
     const allStudents = await Student.find();
     const num = allStudents.length;
     req.body.srNumber = `${num + 1}/${new Date().getFullYear()}`;
@@ -52,11 +53,11 @@ exports.addStudent = async (req, res) => {
     const student = await Student.create(req.body);
 
     setTimeout(() => {
-        if(`public/images/students/${req.file.filename}`)
-        fs.unlink(`public/images/students/${req.file.filename}`, (err) => {
-            if (err) console.log(err);
-        });
-    }, 1*60*60*1000);
+        if (`public/images/students/${req.file.filename}`)
+            fs.unlink(`public/images/students/${req.file.filename}`, (err) => {
+                if (err) console.log(err);
+            });
+    }, 1 * 60 * 1000);
     res.redirect(`/student/${student._id}`);
 };
 
@@ -68,9 +69,16 @@ exports.updateStudentForm = async (req, res, next) => {
 
 exports.updateStudent = async (req, res, next) => {
     const id = req.params.id;
-    req.body.image = req.body.studentImage;
+    // req.body.image = req.body.studentImage;
+    req.body.image = `https://drive.google.com/uc?id=${req.file.fileId}`;
 
     const student = await Student.findByIdAndUpdate(id, req.body);
+    setTimeout(() => {
+        if (`public/images/students/${req.file.filename}`)
+            fs.unlink(`public/images/students/${req.file.filename}`, (err) => {
+                if (err) console.log(err);
+            });
+    }, 1 * 60 * 1000);
     res.redirect(`/student/${id}`);
 };
 
@@ -78,12 +86,9 @@ exports.viewStudent = async (req, res) => {
     const student = await Student.findById(req.params.id);
 
     const studentFee = student["fee"];
-    const grade = student["grade"];
-    const gradeFee = await Fee.findOne({ grade: grade });
     res.status(200).render("studentDetail", {
         student,
         studentFee,
-        gradeFee,
         months: months.slice(1),
     });
 };
@@ -91,19 +96,15 @@ exports.viewStudent = async (req, res) => {
 exports.studentFeeUpdateForm = async (req, res) => {
     const student = await Student.findById(req.params.id);
     const studentFee = student["fee"];
-    const grade = student["grade"];
-    const gradeFee = await Fee.findOne({ grade: grade });
     res.status(200).render("feeUpdate", {
         student,
         studentFee,
-        gradeFee,
         months: months.slice(1),
     });
 };
 
 exports.studentFeeUpdate = async (req, res) => {
     let data = {};
-    // console.log(req.body.admission);
 
     data["april"] = {
         receiptNumber: req.body.receiptNumber[0],
@@ -112,6 +113,19 @@ exports.studentFeeUpdate = async (req, res) => {
         admission: Number(req.body.admission),
         stationery: Number(req.body.stationery),
         transport: Number(req.body.transport[0]),
+        tution: Number(req.body.tution[0]),
+        exam: Number(req.body.exam),
+        computer: Number(req.body.computer),
+        development: Number(req.body.development),
+        balance:
+            Number(req.body.admission) +
+            Number(req.body.stationery) +
+            Number(req.body.transport[0]) +
+            Number(req.body.tution[0]) +
+            Number(req.body.exam) +
+            Number(req.body.computer) +
+            Number(req.body.development) -
+            Number(req.body.paid[0]),
     };
 
     for (let i = 1; i < 12; i++) {
@@ -119,36 +133,18 @@ exports.studentFeeUpdate = async (req, res) => {
             receiptNumber: req.body.receiptNumber[i],
             date: req.body.date[i],
             paid: Number(req.body.paid[i]),
+            tution: Number(req.body.tution[i]),
             transport: Number(req.body.transport[i]),
+            balance:
+                Number(req.body.tution[i]) +
+                Number(req.body.transport[i]) -
+                Number(req.body.paid[i]),
         };
     }
     const updatedStudent = await Student.findByIdAndUpdate(req.params.id, {
         fee: data,
     });
-    // res.status(200).send(updatedStudent);
     res.redirect(`/student/${req.params.id}`);
-};
-
-// ***** GRADE FEE CONTROLLERS *****
-
-exports.updateGradeFeeForm = (req, res) => {
-    const grade = req.params.grade;
-    const gradeFee = Fee.findOne({ grade });
-    res.status(200).render("updateGradeFee", { grade, gradeFee });
-};
-
-exports.updateGradeFee = async (req, res) => {
-    const grade = req.params.grade;
-    const { tution, development, exam, computer } = req.body;
-    await Fee.findOneAndDelete({ grade });
-    const newFee = await Fee.create({
-        grade,
-        tution,
-        computer,
-        development,
-        exam,
-    });
-    res.redirect(`/grade/${grade}`);
 };
 
 exports.viewGrades = async (req, res) => {
@@ -181,7 +177,6 @@ exports.viewGrades = async (req, res) => {
 exports.viewGradeStudents = async (req, res) => {
     const grade = req.params.grade;
     const students = await Student.find({ grade });
-    const gradeFee = await Fee.findOne({ grade: grade });
 
-    res.status(200).render("grade", { students, grade, gradeFee });
+    res.status(200).render("grade", { students, grade });
 };

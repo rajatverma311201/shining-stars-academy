@@ -57,12 +57,40 @@ const studentSchema = new mongoose.Schema({
                 type: Number,
                 default: 0,
             },
+            tution: {
+                type: Number,
+                default: 0,
+            },
+            exam: {
+                type: Number,
+                default: 0,
+            },
+            balance: {
+                type: Number,
+                default: 0,
+            },
+            development: {
+                type: Number,
+                default: 0,
+            },
+            computer: {
+                type: Number,
+                default: 0,
+            },
             paid: { type: Number, default: 0 },
         },
         may: {
             receiptNumber: String,
             date: String,
             transport: {
+                type: Number,
+                default: 0,
+            },
+            tution: {
+                type: Number,
+                default: 0,
+            },
+            balance: {
                 type: Number,
                 default: 0,
             },
@@ -75,12 +103,28 @@ const studentSchema = new mongoose.Schema({
                 type: Number,
                 default: 0,
             },
+            tution: {
+                type: Number,
+                default: 0,
+            },
+            balance: {
+                type: Number,
+                default: 0,
+            },
             paid: { type: Number, default: 0 },
         },
         july: {
             receiptNumber: String,
             date: String,
             transport: {
+                type: Number,
+                default: 0,
+            },
+            tution: {
+                type: Number,
+                default: 0,
+            },
+            balance: {
                 type: Number,
                 default: 0,
             },
@@ -93,12 +137,28 @@ const studentSchema = new mongoose.Schema({
                 type: Number,
                 default: 0,
             },
+            tution: {
+                type: Number,
+                default: 0,
+            },
+            balance: {
+                type: Number,
+                default: 0,
+            },
             paid: { type: Number, default: 0 },
         },
         september: {
             receiptNumber: String,
             date: String,
             transport: {
+                type: Number,
+                default: 0,
+            },
+            tution: {
+                type: Number,
+                default: 0,
+            },
+            balance: {
                 type: Number,
                 default: 0,
             },
@@ -111,12 +171,28 @@ const studentSchema = new mongoose.Schema({
                 type: Number,
                 default: 0,
             },
+            tution: {
+                type: Number,
+                default: 0,
+            },
+            balance: {
+                type: Number,
+                default: 0,
+            },
             paid: { type: Number, default: 0 },
         },
         november: {
             receiptNumber: String,
             date: String,
             transport: {
+                type: Number,
+                default: 0,
+            },
+            tution: {
+                type: Number,
+                default: 0,
+            },
+            balance: {
                 type: Number,
                 default: 0,
             },
@@ -129,12 +205,28 @@ const studentSchema = new mongoose.Schema({
                 type: Number,
                 default: 0,
             },
+            tution: {
+                type: Number,
+                default: 0,
+            },
+            balance: {
+                type: Number,
+                default: 0,
+            },
             paid: { type: Number, default: 0 },
         },
         january: {
             receiptNumber: String,
             date: String,
             transport: {
+                type: Number,
+                default: 0,
+            },
+            tution: {
+                type: Number,
+                default: 0,
+            },
+            balance: {
                 type: Number,
                 default: 0,
             },
@@ -147,12 +239,28 @@ const studentSchema = new mongoose.Schema({
                 type: Number,
                 default: 0,
             },
+            tution: {
+                type: Number,
+                default: 0,
+            },
+            balance: {
+                type: Number,
+                default: 0,
+            },
             paid: { type: Number, default: 0 },
         },
         march: {
             receiptNumber: String,
             date: String,
             transport: {
+                type: Number,
+                default: 0,
+            },
+            tution: {
+                type: Number,
+                default: 0,
+            },
+            balance: {
                 type: Number,
                 default: 0,
             },

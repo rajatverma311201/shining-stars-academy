@@ -38,16 +38,10 @@ router
         fileUploadController.generateURL,
         viewController.updateStudent
     );
-router
-    .get("/updateGradeFee/:grade", viewController.updateGradeFeeForm)
-    .post("/updateGradeFee/:grade", viewController.updateGradeFee);
 
 router
     .get("/student/feeUpdate/:id", viewController.studentFeeUpdateForm)
     .post("/student/feeUpdate/:id", viewController.studentFeeUpdate);
 
-// router
-//     .get("/signin", viewController.signInForm)
-//     .post("/signin", viewController.signIn);
 
 module.exports = router;

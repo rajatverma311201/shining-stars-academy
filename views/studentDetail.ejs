@@ -126,7 +126,7 @@
             <hr />
             <div class="address-container">
                 <div class="address-heading field-heading">Address</div>
-                <div class="address bold"><%= student.address %></div>
+                <div class="address bold"><%= student.address.toUpperCase() %></div>
             </div>
             <hr />
             <div class="contact-field-container">
@@ -174,22 +174,26 @@
                     <th>Balance</th>
                 </tr>
                 <tr>
-                    <% let aprilTotal = studentFee["april"].admission +
-                    studentFee["april"].transport + gradeFee.tution +
-                    gradeFee.exam + gradeFee.development + gradeFee.computer +
+                    <% let aprilTotal = 
+                    studentFee["april"].admission +
+                    studentFee["april"].transport + 
+                    studentFee["april"].tution +
+                    studentFee["april"].exam + 
+                    studentFee["april"].development +
+                    studentFee["april"].computer +
                     studentFee["april"].stationery %>
                     <td><%= studentFee["april"].receiptNumber %></td>
                     <td><%= studentFee["april"].date %></td>
                     <td><%= studentFee["april"].admission %></td>
-                    <th><%= gradeFee.tution %></th>
+                    <th><%= studentFee["april"].tution %></th>
                     <td><%= studentFee["april"].transport %></td>
-                    <th><%= gradeFee.exam %></th>
-                    <th><%= gradeFee.development %></th>
-                    <th><%= gradeFee.computer %></th>
+                    <th><%= studentFee["april"].exam %></th>
+                    <th><%= studentFee["april"].development %></th>
+                    <th><%= studentFee["april"].computer %></th>
                     <th><%= studentFee["april"].stationery %></th>
                     <th><%= aprilTotal %></th>
                     <th><%= studentFee["april"].paid %></th>
-                    <th><%= aprilTotal - studentFee["april"].paid %></th>
+                    <th><%= studentFee["april"].balance %></th>
                 </tr>
             </table>
             <table>
@@ -211,21 +215,17 @@
                             <%= studentFee[month.toLowerCase()].receiptNumber %>
                         </td>
                         <td><%= studentFee[month.toLowerCase()].date %></td>
-                        <td><%= gradeFee.tution %></td>
+                        <td><%= studentFee[month.toLowerCase()].tution %></td>
 
                         <td>
                             <%= studentFee[month.toLowerCase()].transport %>
                         </td>
                         <td>
                             <%= studentFee[month.toLowerCase()].transport +
-                            gradeFee.tution %>
+                            studentFee[month.toLowerCase()].tution %>
                         </td>
                         <td><%= studentFee[month.toLowerCase()].paid %></td>
-                        <td>
-                            <%= studentFee[month.toLowerCase()].transport +
-                            gradeFee.tution -
-                            studentFee[month.toLowerCase()].paid %>
-                        </td>
+                        <td><%= studentFee[month.toLowerCase()].balance %></td>
                     </tr>
                     <%})%>
                 </tbody>

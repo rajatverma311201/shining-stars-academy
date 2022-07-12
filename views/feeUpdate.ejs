@@ -42,8 +42,9 @@
                 </tr>
                 <tr>
                     <% let aprilTotal = studentFee["april"].admission +
-                    studentFee["april"].transport + gradeFee.tution +
-                    gradeFee.exam + gradeFee.development + gradeFee.computer +
+                    studentFee["april"].transport + studentFee["april"].tution +
+                    studentFee["april"].exam + studentFee["april"].development +
+                    studentFee["april"].computer +
                     studentFee["april"].stationery %>
                     <td style="font-weight: bold">April</td>
                     <td>
@@ -71,7 +72,14 @@
                             value="<%= studentFee['april'].admission %>"
                         />
                     </td>
-                    <td><%= gradeFee.tution %></td>
+                    <td>
+                        <input
+                            type="text"
+                            name="tution"
+                            id="tution"
+                            value="<%= studentFee['april'].tution %>"
+                        />
+                    </td>
                     <td>
                         <input
                             type="text"
@@ -80,17 +88,38 @@
                             value="<%= studentFee['april'].transport %>"
                         />
                     </td>
-                    <td><%= gradeFee.exam %></td>
-                    <td><%= gradeFee.computer %></td>
                     <td>
                         <input
-                        type="text"
-                        name="stationery"
-                        id="stationery"
-                        value="<%= studentFee['april'].stationery %>"
+                            type="text"
+                            name="exam"
+                            id="exam"
+                            value="<%= studentFee['april'].exam %>"
                         />
                     </td>
-                    <td><%= gradeFee.development %></td>
+                    <td>
+                        <input
+                            type="text"
+                            name="computer"
+                            id="computer"
+                            value="<%= studentFee['april'].computer %>"
+                        />
+                    </td>
+                    <td>
+                        <input
+                            type="text"
+                            name="stationery"
+                            id="stationery"
+                            value="<%= studentFee['april'].stationery %>"
+                        />
+                    </td>
+                    <td>
+                        <input
+                            type="text"
+                            name="development"
+                            id="development"
+                            value="<%= studentFee['april'].development %>"
+                        />
+                    </td>
                     <td><%= aprilTotal %></td>
                     <td>
                         <input
@@ -131,7 +160,14 @@
                             value="<%= studentFee[month.toLowerCase()].date %>"
                         />
                     </td>
-                    <td><%= gradeFee.tution %></td>
+                    <td>
+                        <input
+                            type="text"
+                            name="tution"
+                            id="tution"
+                            value="<%= studentFee[month.toLowerCase()].tution %>"
+                        />
+                    </td>
                     <td>
                         <input
                             type="text"
@@ -142,7 +178,7 @@
                     </td>
                     <td>
                         <%= studentFee[month.toLowerCase()].transport +
-                        gradeFee.tution %>
+                        studentFee[month.toLowerCase()].tution %>
                     </td>
                     <td>
                         <input

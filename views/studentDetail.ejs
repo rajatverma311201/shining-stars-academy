@@ -98,6 +98,9 @@
                             />
                         </div>
                     </div>
+                    <a href="/uploadstudentimage/<%= student._id %>">
+                        <button>Upload image</button>
+                    </a>
                 </div>
             </div>
             <!-- first container end -->
@@ -126,7 +129,9 @@
             <hr />
             <div class="address-container">
                 <div class="address-heading field-heading">Address</div>
-                <div class="address bold"><%= student.address.toUpperCase() %></div>
+                <div class="address bold">
+                    <%= student.address.toUpperCase() %>
+                </div>
             </div>
             <hr />
             <div class="contact-field-container">
@@ -174,12 +179,9 @@
                     <th>Balance</th>
                 </tr>
                 <tr>
-                    <% let aprilTotal = 
-                    studentFee["april"].admission +
-                    studentFee["april"].transport + 
-                    studentFee["april"].tution +
-                    studentFee["april"].exam + 
-                    studentFee["april"].development +
+                    <% let aprilTotal = studentFee["april"].admission +
+                    studentFee["april"].transport + studentFee["april"].tution +
+                    studentFee["april"].exam + studentFee["april"].development +
                     studentFee["april"].computer +
                     studentFee["april"].stationery %>
                     <td><%= studentFee["april"].receiptNumber %></td>
@@ -231,5 +233,6 @@
                 </tbody>
             </table>
         </div>
+        <script></script>
     </body>
 </html>

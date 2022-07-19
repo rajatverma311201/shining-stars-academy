@@ -21,27 +21,28 @@ router.get("/grade/:grade", viewController.viewGradeStudents);
 router.get("/student/:id", viewController.viewStudent);
 router
     .get("/studentForm", viewController.addStudentForm)
-    .post(
-        "/studentForm",
-        fileUploadController.resizeStudentImage,
-        fileUploadController.uploadFile,
-        fileUploadController.generateURL,
-        viewController.addStudent
-    );
+    .post("/studentForm", viewController.addStudent);
 
-router
-    .get("/student/update/:id", viewController.updateStudentForm)
-    .post(
-        "/student/update/:id",
-        fileUploadController.resizeStudentImage,
-        fileUploadController.uploadFile,
-        fileUploadController.generateURL,
-        viewController.updateStudent
-    );
+router.get("/student/update/:id", viewController.updateStudentForm).post(
+    "/student/update/:id",
+
+    viewController.updateStudent
+);
 
 router
     .get("/student/feeUpdate/:id", viewController.studentFeeUpdateForm)
     .post("/student/feeUpdate/:id", viewController.studentFeeUpdate);
 
+// student image
+
+router
+    .get("/uploadstudentimage/:id", fileUploadController.uploadStudentImageForm)
+    .post(
+        "/uploadstudentimage/:id",
+        fileUploadController.resizeStudentImage,
+        fileUploadController.uploadFile,
+        fileUploadController.generateURL,
+        fileUploadController.uploadStudentImage
+    );
 
 module.exports = router;

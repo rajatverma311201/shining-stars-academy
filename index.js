@@ -14,10 +14,10 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 app.use((req, res, next) => {
     req.requestTime = new Date().toISOString();
-        // console.log(process.env);
+    // console.log(process.env);
 
     // console.log(req.cookies);
-    
+
     next();
 });
 // app.use(express.json());
@@ -28,12 +28,20 @@ const fileStorage = multer.memoryStorage();
 
 app.use(multer({ storage: fileStorage }).single("image"));
 
-
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 // Serving static files
 app.use(express.static(`${__dirname}/public`));
 
 app.use("/", schoolRouter);
+
+app.get("/testupload", (req, res) => {
+    res.status(200).render("testUpload");
+});
+app.post("/testupload", (req, res) => {
+    console.log(req.file);
+    res.status(200).send(req.file);
+
+});
 
 module.exports = app;

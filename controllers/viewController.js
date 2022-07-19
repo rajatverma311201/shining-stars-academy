@@ -44,7 +44,6 @@ exports.addStudentForm = (req, res) => {
 exports.addStudent = async (req, res) => {
     // res.status(200).render("studentForm");
     // req.body.image = req.body.studentImage;
-    req.body.image = `https://drive.google.com/uc?id=${req.file.fileId}`;
 
     const allStudents = await Student.find();
     const num = allStudents.length;
@@ -52,12 +51,6 @@ exports.addStudent = async (req, res) => {
     req.body.admissionYear = new Date().getFullYear();
     const student = await Student.create(req.body);
 
-    setTimeout(() => {
-        if (`public/images/students/${req.file.filename}`)
-            fs.unlink(`public/images/students/${req.file.filename}`, (err) => {
-                if (err) console.log(err);
-            });
-    }, 1 * 60 * 1000);
     res.redirect(`/student/${student._id}`);
 };
 
@@ -70,15 +63,9 @@ exports.updateStudentForm = async (req, res, next) => {
 exports.updateStudent = async (req, res, next) => {
     const id = req.params.id;
     // req.body.image = req.body.studentImage;
-    req.body.image = `https://drive.google.com/uc?id=${req.file.fileId}`;
 
     const student = await Student.findByIdAndUpdate(id, req.body);
-    setTimeout(() => {
-        if (`public/images/students/${req.file.filename}`)
-            fs.unlink(`public/images/students/${req.file.filename}`, (err) => {
-                if (err) console.log(err);
-            });
-    }, 1 * 60 * 1000);
+
     res.redirect(`/student/${id}`);
 };
 

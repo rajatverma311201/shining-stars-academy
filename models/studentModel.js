@@ -40,7 +40,7 @@ const studentSchema = new mongoose.Schema({
     alternateContact: {
         type: Number,
     },
-    image: { type: String, required: true },
+    image: { type: String, default: "" },
     fee: {
         april: {
             receiptNumber: String,

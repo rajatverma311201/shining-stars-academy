@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title><%= student.name %> photo upload</title>
+        <link
+            href="https://releases.transloadit.com/uppy/v2.12.3/uppy.min.css"
+            rel="stylesheet"
+        />
+
+        <style>
+            @import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&display=swap");
+
+            :root {
+                --color-primary: #00308f;
+            }
+            * {
+                font-family: "JetBrains Mono", monospace;
+            }
+            button {
+                /* margin: 1rem; */
+                /* margin-left: auto; */
+                color: var(--color-primary);
+                font-size: 1rem;
+                font-weight: 500;
+                padding: 0.25rem 0.5rem;
+                background-color: white;
+                border: 2.5px solid var(--color-primary);
+                border-color: var(--color-primary);
+                border-radius: 10px;
+                transition: 0.2s;
+            }
+
+            button:hover {
+                background-color: var(--color-primary);
+                color: white;
+                cursor: pointer;
+                transition: 0.2s;
+            }
+            #drag-drop-area {
+                width: 500px;
+                height: 300px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="id" style="color: white"><%= student._id %></div>
+        <a href="/student/<%= student._id %>"
+            ><button>Go back to Student</button></a
+        >
+        <div id="drag-drop-area"></div>
+        <script src="https://releases.transloadit.com/uppy/v2.12.3/uppy.min.js"></script>
+        <script>
+            const id = document.getElementById("id").innerText;
+            const uppy = new Uppy.Core()
+                .use(Uppy.Dashboard, {
+                    inline: true,
+                    target: "#drag-drop-area",
+                    width: 750,
+                    height: 500,
+                })
+                .use(Uppy.Tus, { endpoint: "https://tusd.tusdemo.net/files/" })
+                .use(Uppy.Webcam, {
+                    target: Uppy.Dashboard,
+                    modes: ["picture"],
+                    mirror: false,
+                })
+                .use(Uppy.XHRUpload, {
+                    endpoint: `/uploadstudentimage/${id}`,
+                    fieldName: "image",
+                    formData: true,
+                });
+
+            uppy.on("complete", (result) => {
+                console.log(
+                    "Upload complete! We’ve uploaded these files:",
+                    result.successful
+                );
+            });
+        </script>
+    </body>
+</html>

@@ -81,7 +81,6 @@ const AdmissionFormEdit = ({}) => {
             height: 200,
         });
         setImageSrc(cam);
-        console.log(cam);
         handleClose();
     };
 
@@ -632,7 +631,7 @@ const GenderSelector = ({ gender, setGender }) => (
 );
 
 const DOBSelector = ({ dob, setDob }) => (
-    <LocalizationProvider dateAdapter={AdapterDayjs}>
+    <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="en-gb">
         <DatePicker
             value={dayjs(
                 `${dob.split("/")[2]}-${dob.split("/")[1]}-${dob.split("/")[0]}`

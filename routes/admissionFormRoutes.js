@@ -7,6 +7,9 @@ router
     .get(admissionFormController.getAllForms)
     .post(admissionFormController.addOneForm);
 
-router.route("/:id").get(admissionFormController.getOneForm);
+router
+    .route("/:id")
+    .get(admissionFormController.getOneForm)
+    .delete(admissionFormController.deleteOneForm);
 
 module.exports = router;

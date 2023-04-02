@@ -74,8 +74,8 @@ const AdmissionFormView = () => {
                         className={styles["student-image"]}
                     />
                 </div>
-                {DATA.map((ele) => (
-                    <div className={styles["info-container"]}>
+                {DATA.map((ele, idx) => (
+                    <div key={idx} className={styles["info-container"]}>
                         <div className={styles["info-heading"]}>
                             {ele.label}
                         </div>

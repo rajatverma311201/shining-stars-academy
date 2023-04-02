@@ -13,8 +13,8 @@
     flex-wrap: wrap;
 }
 .form-container {
-    padding-bottom: 1rem;
-    width: 20rem;
+    padding: 1rem 0.25rem;
+    width: 15rem;
     border: 2px solid slategray;
     text-align: center;
     transition: all 0.2s;
@@ -27,7 +27,17 @@
     -moz-border-radius: 5px;
     -ms-border-radius: 5px;
     -o-border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }
+
 .form-container:hover {
     /* cursor: pointer; */
+}
+
+.form__card-btns {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
 }

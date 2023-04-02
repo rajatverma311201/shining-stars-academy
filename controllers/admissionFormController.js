@@ -33,3 +33,16 @@ exports.getOneForm = catchAsync(async (req, res, next) => {
         },
     });
 });
+
+exports.deleteOneForm = catchAsync(async (req, res, next) => {
+    const form = await AdmissionForm.findByIdAndDelete(req.params.id);
+    if (!form) {
+        return next(new AppError("No form found with that ID", 404));
+    }
+    const forms = await AdmissionForm.find();
+
+    res.status(200).json({
+        status: "success",
+        data: { forms },
+    });
+});

@@ -67,8 +67,10 @@ const AdmissionForm = () => {
     const handleFormSubmit = async () => {
         setFormSubmitting(true);
         const URL = import.meta.env.VITE_API_URL;
+        const id_toast = toast.loading("Saving Form, please wait");
+
         try {
-            const resp = axios.post(`${URL}/admission-forms`, {
+            const resp = await axios.post(`${URL}/admission-forms`, {
                 name,
                 imageSrc,
                 gender,
@@ -92,42 +94,29 @@ const AdmissionForm = () => {
                 receiptNumber,
             });
             let form;
-            await toast.promise(resp, {
-                pending: {
-                    render() {
-                        return "Please Wait, Form is Saving";
-                    },
-                    icon: false,
-                },
-                success: {
-                    render({ data }) {
-                        // console.log(data);
-                        form = data.data.data.form;
-                        navigate(
-                            `/admission-form/view?id=${data.data.data.form._id}`,
-                            {
-                                state: data.data.data.form,
-                            }
-                        );
-                        return `Done`;
-                    },
 
-                    // other options
-                    // icon: "🟢",
-                },
-                error: {
-                    render({ data }) {
-                        console.log(data);
-                        return "error occured"; // When the promise reject, data will contains the error
-                    },
-                },
+            toast.update(id_toast, {
+                render: "Form Saved Successfully",
+                type: "success",
+                isLoading: false,
+                autoClose: 1500,
             });
-            console.log(form);
 
+            setTimeout(() => {
+                navigate(`/admission-form/view?id=${resp.data.data.form._id}`, {
+                    state: resp.data.data.form,
+                });
+            }, 1500);
             setFormSubmitting(false);
         } catch (err) {
             console.log(err);
             setFormSubmitting(false);
+            toast.update(id_toast, {
+                render: "Form Saving Error",
+                type: "error",
+                isLoading: false,
+                autoClose: 1500,
+            });
         }
     };
 

@@ -4,7 +4,6 @@ import {
     Box,
     Button,
     FormControl,
-    FormControlLabel,
     InputLabel,
     MenuItem,
     Modal,
@@ -12,38 +11,69 @@ import {
     TextField,
 } from "@mui/material";
 import Webcam from "react-webcam";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs from "dayjs";
-const AdmissionForm = () => {
+const AdmissionFormEdit = ({}) => {
     const navigate = useNavigate();
+    const location = useLocation();
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     const webcamRef = useRef(null);
-    const [imageSrc, setImageSrc] = useState(null);
+    const [imageSrc, setImageSrc] = useState(location.state.imageSrc || null);
 
-    const [name, setName] = useState("");
-    const [gender, setGender] = useState("");
-    const [dob, setDob] = useState("");
-    const [fatherName, setFatherName] = useState("");
-    const [motherName, setMotherName] = useState("");
-    const [fatherQualification, setFatherQualification] = useState("");
-    const [fatherOccupation, setFatherOccupation] = useState("");
-    const [motherQualification, setMotherQualification] = useState("");
-    const [motherOccupation, setMotherOccupation] = useState("");
-    const [address, setAddress] = useState("");
-    const [language, setLanguage] = useState("Hindi");
-    const [religion, setReligion] = useState("Hindu");
-    const [category, setCategory] = useState("General");
-    const [nationality, setNationality] = useState("Indian");
-    const [admissionClass, setAdmissionClass] = useState("");
-    const [aadhaarNumber, setAadhaarNumber] = useState("");
-    const [srNumber, setSrNumber] = useState("");
-    const [inabilities, setInabilities] = useState("");
-    const [admissionDate, setAdmissionDate] = useState("");
-    const [receiptNumber, setReceiptNumber] = useState("");
+    const [name, setName] = useState(location.state.name || "");
+    const [gender, setGender] = useState(location.state.gender || "");
+    const [dob, setDob] = useState(location.state.dob || "");
+    const [fatherName, setFatherName] = useState(
+        location.state.fatherName || ""
+    );
+    const [motherName, setMotherName] = useState(
+        location.state.motherName || ""
+    );
+    const [fatherQualification, setFatherQualification] = useState(
+        location.state.fatherQualification || ""
+    );
+    const [fatherOccupation, setFatherOccupation] = useState(
+        location.state.fatherOccupation || ""
+    );
+    const [motherQualification, setMotherQualification] = useState(
+        location.state.motherQualification || ""
+    );
+    const [motherOccupation, setMotherOccupation] = useState(
+        location.state.motherOccupation || ""
+    );
+    const [address, setAddress] = useState(location.state.address || "");
+    const [language, setLanguage] = useState(
+        location.state.language || "Hindi"
+    );
+    const [religion, setReligion] = useState(
+        location.state.religion || "Hindu"
+    );
+    const [category, setCategory] = useState(
+        location.state.category || "General"
+    );
+    const [nationality, setNationality] = useState(
+        location.state.nationality || "Indian"
+    );
+    const [admissionClass, setAdmissionClass] = useState(
+        location.state.admissionClass || ""
+    );
+    const [aadhaarNumber, setAadhaarNumber] = useState(
+        location.state.aadhaarNumber || ""
+    );
+    const [srNumber, setSrNumber] = useState(location.state.srNumber || "");
+    const [inabilities, setInabilities] = useState(
+        location.state.inabilities || ""
+    );
+    const [admissionDate, setAdmissionDate] = useState(
+        location.state.admissionDate || ""
+    );
+    const [receiptNumber, setReceiptNumber] = useState(
+        location.state.receiptNumber || ""
+    );
 
     const handleImageCapture = () => {
         const cam = webcamRef.current.getScreenshot({
@@ -442,7 +472,7 @@ const AdmissionForm = () => {
     );
 };
 
-export default AdmissionForm;
+export default AdmissionFormEdit;
 
 const NationalitySelector = ({ setNationality, nationality }) => (
     <FormControl fullWidth>

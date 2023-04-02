@@ -35,3 +35,10 @@
 #outline-basic {
     width: 50rem;
 }
+
+.webcam-modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}

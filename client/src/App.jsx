@@ -3,10 +3,20 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import AdmissionForm from "./pages/AdmissionForm";
+import AdmissionFormPreview from "./pages/AdmissionFormPreview";
+import AdmissionFormEdit from "./pages/AdmissionFormEdit";
 const router = createBrowserRouter([
     {
-        path: "/",
+        path: "/admission-form",
         element: <AdmissionForm />,
+    },
+    {
+        path: "/admission-form/preview",
+        element: <AdmissionFormPreview />,
+    },
+    {
+        path: "/admission-form/edit",
+        element: <AdmissionFormEdit />,
     },
 ]);
 

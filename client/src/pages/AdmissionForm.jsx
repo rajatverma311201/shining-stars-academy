@@ -388,11 +388,12 @@ const AdmissionForm = () => {
                         </div>
                     </div>
                     <br />
-                    <div className={styles["form__group"]}>
+                    <div className={styles["form__group--btn"]}>
                         <Button
                             variant="contained"
                             sx={{ fontSize: "1.25rem" }}
                             size="large"
+                            color="warning"
                             onClick={handleFormSubmit}
                         >
                             Preview Form
@@ -597,7 +598,7 @@ const GenderSelector = ({ gender, setGender }) => (
 );
 
 const DOBSelector = ({ dob, setDob }) => (
-    <LocalizationProvider dateAdapter={AdapterDayjs}>
+    <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="en-gb">
         <DatePicker
             value={dayjs(
                 `${dob.split("/")[2]}-${dob.split("/")[1]}-${dob.split("/")[0]}`

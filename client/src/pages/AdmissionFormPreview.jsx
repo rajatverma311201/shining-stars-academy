@@ -2,6 +2,9 @@ import React, { useEffect, useRef, useState } from "react";
 import styles from "./AdmissionForm.module.css";
 import { Button, TextField } from "@mui/material";
 import { useNavigate, useLocation } from "react-router-dom";
+import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const AdmissionForm = () => {
     const location = useLocation();
@@ -59,9 +62,78 @@ const AdmissionForm = () => {
             },
         });
     };
-    console.log(imageSrc);
+    // console.log(imageSrc);
+
+    const handleFormSubmit = async () => {
+        setFormSubmitting(true);
+        const URL = import.meta.env.VITE_API_URL;
+        try {
+            const resp = axios.post(`${URL}/admission-forms`, {
+                name,
+                imageSrc,
+                gender,
+                dob,
+                fatherName,
+                motherName,
+                fatherOccupation,
+                fatherQualification,
+                motherOccupation,
+                motherQualification,
+                address,
+                language,
+                religion,
+                category,
+                nationality,
+                admissionClass,
+                aadhaarNumber,
+                srNumber,
+                inabilities,
+                admissionDate,
+                receiptNumber,
+            });
+            let form;
+            await toast.promise(resp, {
+                pending: {
+                    render() {
+                        return "Please Wait, Form is Saving";
+                    },
+                    icon: false,
+                },
+                success: {
+                    render({ data }) {
+                        // console.log(data);
+                        form = data.data.data.form;
+                        navigate(
+                            `/admission-form/view?id=${data.data.data.form._id}`,
+                            {
+                                state: data.data.data.form,
+                            }
+                        );
+                        return `Done`;
+                    },
+
+                    // other options
+                    // icon: "🟢",
+                },
+                error: {
+                    render({ data }) {
+                        console.log(data);
+                        return "error occured"; // When the promise reject, data will contains the error
+                    },
+                },
+            });
+            console.log(form);
+
+            setFormSubmitting(false);
+        } catch (err) {
+            console.log(err);
+            setFormSubmitting(false);
+        }
+    };
+
     return (
         <>
+            <ToastContainer />
             <main className={styles["main-container"]}>
                 <h1 className={styles["main-heading"]}>Admission Form</h1>
                 <form className={styles["form"]}>
@@ -386,12 +458,13 @@ const AdmissionForm = () => {
                         </div>
                     </div>
                     <br />
-                    <div className={styles["form__group"]}>
+                    <div className={styles["form__group--btn"]}>
                         <Button
                             variant="contained"
-                            sx={{ fontSize: "1.25rem" }}
+                            sx={{ fontSize: "1.2rem", marginRight: "1rem" }}
                             size="large"
-                            // onClick={handleFormSubmit}
+                            color="warning"
+                            onClick={handleFormSubmit}
                         >
                             Submit Form
                         </Button>

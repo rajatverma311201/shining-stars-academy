@@ -418,11 +418,16 @@ const AdmissionFormEdit = ({}) => {
                         </div>
                     </div>
                     <br />
-                    <div className={styles["form__group"]}>
+                    <div className={styles["form__group--btn"]}>
                         <Button
                             variant="contained"
-                            sx={{ fontSize: "1.25rem" }}
+                            sx={{
+                                fontSize: "1.2rem",
+                                marginLeft: "auto",
+                                marginRight: "auto",
+                            }}
                             size="large"
+                            color="warning"
                             onClick={handleFormSubmit}
                         >
                             Preview Form

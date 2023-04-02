@@ -1,0 +1,37 @@
+.main-heading {
+    text-align: center;
+    /* background-color: red; */
+    /* display: block; */
+}
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    padding: 1rem 10rem;
+}
+.label {
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+}
+.form__group--inner {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 5rem;
+}
+
+.form__group {
+    flex: 1;
+}
+
+.form__group {
+    /* display: flex; */
+    /* flex-direction: column; */
+
+    /* width: 75%; */
+    /* align-items: stretch; */
+}
+
+#outline-basic {
+    width: 50rem;
+}

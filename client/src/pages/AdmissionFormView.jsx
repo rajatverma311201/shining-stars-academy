@@ -3,6 +3,8 @@ import { useNavigate, useLocation, useSearchParams } from "react-router-dom";
 import axios from "axios";
 import styles from "./AdmissionFormView.module.css";
 const AdmissionFormView = () => {
+    useEffect(() => window.scrollTo(0, 0), []);
+
     const URL = import.meta.env.VITE_API_URL;
     const [searchParams] = useSearchParams();
     const location = useLocation();
@@ -50,7 +52,7 @@ const AdmissionFormView = () => {
             <div className={styles["top-info-container"]}>
                 <div className={styles["info-top"]}>
                     <div className={styles["info-top-name"]}>
-                        Sr. No. &nbsp; -{" "}
+                        Sr. No.&nbsp;-
                     </div>
                     <div className={styles["info-top-text"]}>
                         {form.srNumber}
@@ -58,10 +60,28 @@ const AdmissionFormView = () => {
                 </div>
                 <div className={styles["info-top"]}>
                     <div className={styles["info-top-name"]}>
-                        Aadhaar No. &nbsp; -
+                        Admission Date&nbsp;-
+                    </div>
+                    <div className={styles["info-top-text"]}>
+                        {form.admissionDate}
+                    </div>
+                </div>
+            </div>
+            <div className={styles["top-info-container"]}>
+                <div className={styles["info-top"]}>
+                    <div className={styles["info-top-name"]}>
+                        Aadhaar No.&nbsp;-
                     </div>
                     <div className={styles["info-top-text"]}>
                         {form.aadhaarNumber}
+                    </div>
+                </div>
+                <div className={styles["info-top"]}>
+                    <div className={styles["info-top-name"]}>
+                        Receipt No.&nbsp;-
+                    </div>
+                    <div className={styles["info-top-text"]}>
+                        {form.receiptNumber}
                     </div>
                 </div>
             </div>
@@ -119,6 +139,10 @@ const DATA = [
     {
         label: "Date of Birth",
         property: "dob",
+    },
+    {
+        label: "Phone Number",
+        property: "phoneNumber",
     },
     {
         label: "Father/Guardian's Name",

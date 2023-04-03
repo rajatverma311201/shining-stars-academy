@@ -85,6 +85,9 @@ const admissionFormSchema = new mongoose.Schema(
         receiptNumber: {
             type: String,
         },
+        phoneNumber: {
+            type: String,
+        },
     },
     { timestamps: true }
 );

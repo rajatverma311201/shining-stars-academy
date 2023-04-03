@@ -1,10 +1,9 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import styles from "./AdmissionForm.module.css";
 import {
     Box,
     Button,
     FormControl,
-    FormControlLabel,
     InputLabel,
     MenuItem,
     Modal,
@@ -12,38 +11,72 @@ import {
     TextField,
 } from "@mui/material";
 import Webcam from "react-webcam";
-import { useNavigate } from "react-router-dom";
-import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import dayjs from "dayjs";
+import { useLocation, useNavigate } from "react-router-dom";
 const AdmissionForm = () => {
+    useEffect(() => window.scrollTo(0, 0), []);
+
+    const location = useLocation();
+    // console.log(location);
     const navigate = useNavigate();
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     const webcamRef = useRef(null);
-    const [imageSrc, setImageSrc] = useState(null);
+    const [imageSrc, setImageSrc] = useState(location.state?.imageSrc || null);
 
-    const [name, setName] = useState("");
-    const [gender, setGender] = useState("");
-    const [dob, setDob] = useState("");
-    const [fatherName, setFatherName] = useState("");
-    const [motherName, setMotherName] = useState("");
-    const [fatherQualification, setFatherQualification] = useState("");
-    const [fatherOccupation, setFatherOccupation] = useState("");
-    const [motherQualification, setMotherQualification] = useState("");
-    const [motherOccupation, setMotherOccupation] = useState("");
-    const [address, setAddress] = useState("");
-    const [language, setLanguage] = useState("Hindi");
-    const [religion, setReligion] = useState("Hindu");
-    const [category, setCategory] = useState("General");
-    const [nationality, setNationality] = useState("Indian");
-    const [admissionClass, setAdmissionClass] = useState("");
-    const [aadhaarNumber, setAadhaarNumber] = useState("");
-    const [srNumber, setSrNumber] = useState("");
-    const [inabilities, setInabilities] = useState("");
-    const [admissionDate, setAdmissionDate] = useState("");
-    const [receiptNumber, setReceiptNumber] = useState("");
+    const [name, setName] = useState(location.state?.name || "");
+    const [gender, setGender] = useState(location.state?.gender || "");
+    const [dob, setDob] = useState(location.state?.dob || "");
+    const [fatherName, setFatherName] = useState(
+        location.state?.fatherName || ""
+    );
+    const [motherName, setMotherName] = useState(
+        location.state?.motherName || ""
+    );
+    const [fatherQualification, setFatherQualification] = useState(
+        location.state?.fatherQualification || ""
+    );
+    const [fatherOccupation, setFatherOccupation] = useState(
+        location.state?.fatherOccupation || ""
+    );
+    const [motherQualification, setMotherQualification] = useState(
+        location.state?.motherQualification || ""
+    );
+    const [motherOccupation, setMotherOccupation] = useState(
+        location.state?.motherOccupation || ""
+    );
+    const [address, setAddress] = useState(location.state?.address || "");
+    const [language, setLanguage] = useState(
+        location.state?.language || "Hindi"
+    );
+    const [religion, setReligion] = useState(
+        location.state?.religion || "Hindu"
+    );
+    const [category, setCategory] = useState(
+        location.state?.category || "General"
+    );
+    const [nationality, setNationality] = useState(
+        location.state?.nationality || "Indian"
+    );
+    const [admissionClass, setAdmissionClass] = useState(
+        location.state?.admissionClass || ""
+    );
+    const [aadhaarNumber, setAadhaarNumber] = useState(
+        location.state?.aadhaarNumber || ""
+    );
+    const [srNumber, setSrNumber] = useState(location.state?.srNumber || "");
+    const [inabilities, setInabilities] = useState(
+        location.state?.inabilities || ""
+    );
+    const [admissionDate, setAdmissionDate] = useState(
+        location.state?.admissionDate || ""
+    );
+    const [receiptNumber, setReceiptNumber] = useState(
+        location.state?.receiptNumber || ""
+    );
+    const [phoneNumber, setPhoneNumber] = useState(
+        location.state?.phoneNumber || ""
+    );
 
     const handleImageCapture = () => {
         const cam = webcamRef.current.getScreenshot({
@@ -79,6 +112,7 @@ const AdmissionForm = () => {
                 inabilities,
                 admissionDate,
                 receiptNumber,
+                phoneNumber,
             },
         });
     };
@@ -174,7 +208,16 @@ const AdmissionForm = () => {
                         </div>
                         <div className={styles["form__group"]}>
                             <div className={styles["label"]}>Date of Birth</div>
-                            <DOBSelector dob={dob} setDob={setDob} />
+                            <TextField
+                                value={dob}
+                                fullWidth
+                                id="outlined-basic"
+                                label="Enter DOB"
+                                variant="outlined"
+                                onChange={(e) => {
+                                    setDob(e.target.value);
+                                }}
+                            />
                         </div>
                     </div>
 
@@ -274,22 +317,38 @@ const AdmissionForm = () => {
                             />
                         </div>
                     </div>
-                    <div className={styles["form__group"]}>
-                        <div className={styles["label"]}>Address</div>
-                        <TextField
-                            value={address}
-                            sx={{ width: "50vw" }}
-                            multiline
-                            fullWidth
-                            id="outlined-basic"
-                            label="Enter Address"
-                            variant="outlined"
-                            minRows={3}
-                            onChange={(e) => {
-                                setAddress(e.target.value);
-                            }}
-                        />
+                    <div className={styles["form__group--inner"]}>
+                        <div className={styles["form__group"]}>
+                            <div className={styles["label"]}>Address</div>
+                            <TextField
+                                value={address}
+                                // sx={{ width: "50vw" }}
+                                multiline
+                                fullWidth
+                                id="outlined-basic"
+                                label="Enter Address"
+                                variant="outlined"
+                                minRows={3}
+                                onChange={(e) => {
+                                    setAddress(e.target.value);
+                                }}
+                            />
+                        </div>
+                        <div className={styles["form__group"]}>
+                            <div className={styles["label"]}>Phone Number</div>
+                            <TextField
+                                value={phoneNumber}
+                                fullWidth
+                                id="outlined-basic"
+                                label="Enter Phone Number"
+                                variant="outlined"
+                                onChange={(e) => {
+                                    setPhoneNumber(e.target.value);
+                                }}
+                            />
+                        </div>
                     </div>
+
                     <div className={styles["form__group--inner"]}>
                         <div className={styles["form__group"]}>
                             <div className={styles["label"]}>
@@ -368,9 +427,15 @@ const AdmissionForm = () => {
                             <div className={styles["label"]}>
                                 Admission Date
                             </div>
-                            <AdmissionDateSelector
-                                setAdmissionDate={setAdmissionDate}
-                                admissionDate={admissionDate}
+                            <TextField
+                                value={admissionDate}
+                                fullWidth
+                                id="outlined-basic"
+                                label="Enter Admission Date"
+                                variant="outlined"
+                                onChange={(e) => {
+                                    setAdmissionDate(e.target.value);
+                                }}
                             />
                         </div>
                         <div className={styles["form__group"]}>
@@ -468,20 +533,6 @@ const NationalitySelector = ({ setNationality, nationality }) => (
     </FormControl>
 );
 
-const AdmissionDateSelector = ({ setAdmissionDate, admissionDate }) => (
-    <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="en-gb">
-        <DatePicker
-            value={dayjs(
-                `${admissionDate.split("/")[2]}-${
-                    admissionDate.split("/")[1]
-                }-${admissionDate.split("/")[0]}`
-            )}
-            format="DD-MM-YYYY"
-            onChange={(val) => setAdmissionDate(val.$d.toLocaleDateString())}
-        />
-    </LocalizationProvider>
-);
-
 const AdmissionClassSelector = ({ setAdmissionClass, admissionClass }) => (
     <FormControl fullWidth>
         <InputLabel id="demo-simple-select-label">Select Class</InputLabel>
@@ -535,7 +586,7 @@ const CategorySelector = ({ setCategory, category }) => (
 );
 
 const ReligionSelector = ({ setReligion, religion }) => (
-    <FormControl fullWidth>
+    <FormControl fullWidth color="warning">
         <InputLabel id="demo-simple-select-label">Select Religion</InputLabel>
         <Select
             value={religion}
@@ -595,16 +646,4 @@ const GenderSelector = ({ gender, setGender }) => (
             <MenuItem value="Female">Female</MenuItem>
         </Select>
     </FormControl>
-);
-
-const DOBSelector = ({ dob, setDob }) => (
-    <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="en-gb">
-        <DatePicker
-            value={dayjs(
-                `${dob.split("/")[2]}-${dob.split("/")[1]}-${dob.split("/")[0]}`
-            )}
-            format="DD-MM-YYYY"
-            onChange={(val) => setDob(val.$d.toLocaleDateString())}
-        />
-    </LocalizationProvider>
 );

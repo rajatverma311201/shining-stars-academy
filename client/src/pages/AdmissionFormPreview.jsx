@@ -33,10 +33,11 @@ const AdmissionForm = () => {
         inabilities,
         admissionDate,
         receiptNumber,
+        phoneNumber,
     } = location.state;
 
     const editFormHandler = () => {
-        navigate("/admission-form/edit", {
+        navigate("/admission-form", {
             state: {
                 name,
                 imageSrc,
@@ -59,8 +60,11 @@ const AdmissionForm = () => {
                 inabilities,
                 admissionDate,
                 receiptNumber,
+                phoneNumber,
             },
         });
+
+        // navigate();
     };
     // console.log(imageSrc);
 
@@ -92,8 +96,9 @@ const AdmissionForm = () => {
                 inabilities,
                 admissionDate,
                 receiptNumber,
+                phoneNumber,
             });
-            let form;
+            // let form;
 
             toast.update(id_toast, {
                 render: "Form Saved Successfully",
@@ -124,7 +129,9 @@ const AdmissionForm = () => {
         <>
             <ToastContainer />
             <main className={styles["main-container"]}>
-                <h1 className={styles["main-heading"]}>Admission Form</h1>
+                <h1 className={styles["main-heading"]}>
+                    Admission Form Preview
+                </h1>
                 <form className={styles["form"]}>
                     <div className={styles["form__group--inner"]}>
                         <div className={styles["form__group"]}>
@@ -305,22 +312,37 @@ const AdmissionForm = () => {
                             />
                         </div>
                     </div>
-                    <div className={styles["form__group"]}>
-                        <div className={styles["label"]}>Address</div>
-                        <TextField
-                            InputProps={{
-                                readOnly: true,
-                            }}
-                            placeholder="None"
-                            value={address}
-                            sx={{ width: "50vw" }}
-                            multiline
-                            fullWidth
-                            id="outlined-basic"
-                            variant="outlined"
-                            minRows={3}
-                        />
+                    <div className={styles["form__group--inner"]}>
+                        <div className={styles["form__group"]}>
+                            <div className={styles["label"]}>Address</div>
+                            <TextField
+                                InputProps={{
+                                    readOnly: true,
+                                }}
+                                // placeholder="None"
+                                value={address}
+                                // sx={{ width: "50vw" }}
+                                multiline
+                                fullWidth
+                                id="outlined-basic"
+                                variant="outlined"
+                                minRows={3}
+                            />
+                        </div>
+                        <div className={styles["form__group"]}>
+                            <div className={styles["label"]}>Phone Number</div>
+                            <TextField
+                                InputProps={{
+                                    readOnly: true,
+                                }}
+                                value={phoneNumber}
+                                fullWidth
+                                id="outlined-basic"
+                                variant="outlined"
+                            />
+                        </div>
                     </div>
+
                     <div className={styles["form__group--inner"]}>
                         <div className={styles["form__group"]}>
                             <div className={styles["label"]}>

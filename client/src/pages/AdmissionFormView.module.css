@@ -95,6 +95,7 @@
 }
 .info-top {
     display: flex;
+    align-items: center;
     gap: 0.25rem;
 }
 .info-top-name {

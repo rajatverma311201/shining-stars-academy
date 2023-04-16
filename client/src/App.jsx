@@ -4,6 +4,8 @@ import AdmissionForm from "./pages/AdmissionForm";
 import AdmissionFormPreview from "./pages/AdmissionFormPreview";
 import AdmissionFormView from "./pages/AdmissionFormView";
 import HomePage from "./pages/HomePage";
+import IDCardForms from "./pages/IDCardForms";
+import IDCardFormsView from "./pages/IDCardFormsView";
 const router = createBrowserRouter([
     {
         path: "/",
@@ -21,6 +23,14 @@ const router = createBrowserRouter([
     {
         path: "/admission-form/view",
         element: <AdmissionFormView />,
+    },
+    {
+        path: "/id-card-form",
+        element: <IDCardForms />,
+    },
+    {
+        path: "/id-card-form/view",
+        element: <IDCardFormsView />,
     },
 ]);
 

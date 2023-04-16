@@ -1,0 +1,31 @@
+.main-grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    padding: 1rem;
+}
+
+.card-container {
+    border: 2px solid;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    padding: 0.5rem;
+    gap: 1rem;
+}
+.form__group {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.form__group label {
+    width: 75px;
+}
+.form__group input {
+    /* width: 100%; */
+    padding: 0.25rem 0.5rem;
+    font-size: 1rem;
+    flex: 1;
+}

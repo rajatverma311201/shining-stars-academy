@@ -57,7 +57,7 @@ const IDCardForms = () => {
                                 onChange={(e) => {
                                     console.log(e.target.value);
                                     const currNames = [...name];
-                                    currNames[idx] = e?.target?.value?.trim();
+                                    currNames[idx] = e?.target?.value;
                                     setName([...currNames]);
                                 }}
                             />
@@ -69,7 +69,7 @@ const IDCardForms = () => {
                                 value={fatherName[idx]}
                                 onChange={(e) => {
                                     const currNames = [...fatherName];
-                                    currNames[idx] = e.target.value.trim();
+                                    currNames[idx] = e.target.value;
                                     setFatherName([...currNames]);
                                 }}
                             />
@@ -83,7 +83,7 @@ const IDCardForms = () => {
                                 value={_class[idx]}
                                 onChange={(e) => {
                                     const currNames = [..._class];
-                                    currNames[idx] = e.target.value.trim();
+                                    currNames[idx] = e.target.value;
                                     setClass([...currNames]);
                                 }}
                             >
@@ -110,7 +110,7 @@ const IDCardForms = () => {
                                 value={address[idx]}
                                 onChange={(e) => {
                                     const currNames = [...address];
-                                    currNames[idx] = e.target.value.trim();
+                                    currNames[idx] = e.target.value;
                                     setAddress([...currNames]);
                                 }}
                             />
@@ -122,7 +122,7 @@ const IDCardForms = () => {
                                 value={mobile[idx]}
                                 onChange={(e) => {
                                     const currNames = [...mobile];
-                                    currNames[idx] = e.target.value.trim();
+                                    currNames[idx] = e.target.value;
                                     setMobile([...currNames]);
                                 }}
                             />

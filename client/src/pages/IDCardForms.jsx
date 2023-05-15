@@ -10,13 +10,13 @@ const IDCardForms = () => {
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     const webcamRef = useRef(null);
-
-    const [name, setName] = useState(["", "", "", "", "", ""]);
-    const [fatherName, setFatherName] = useState(["", "", "", "", "", ""]);
-    const [_class, setClass] = useState(["", "", "", "", "", ""]);
-    const [mobile, setMobile] = useState(["", "", "", "", "", ""]);
-    const [address, setAddress] = useState(["", "", "", "", "", ""]);
-    const [image, setImage] = useState(["", "", "", "", "", ""]);
+    const emptyArray = ["", "", "", "", "", "", "", ""];
+    const [name, setName] = useState([...emptyArray]);
+    const [fatherName, setFatherName] = useState([...emptyArray]);
+    const [_class, setClass] = useState([...emptyArray]);
+    const [mobile, setMobile] = useState([...emptyArray]);
+    const [address, setAddress] = useState([...emptyArray]);
+    const [image, setImage] = useState([...emptyArray]);
     const [idx, setIdx] = useState(0);
     const handleImageCapture = () => {
         console.log(idx);
@@ -47,7 +47,7 @@ const IDCardForms = () => {
         <>
             <h1>IDCardForms</h1>
             <div className={styles["main-grid-container"]}>
-                {[0, 1, 2, 3, 4, 5].map((ele, idx) => (
+                {[0, 1, 2, 3, 4, 5, 6, 7].map((ele, idx) => (
                     <div className={styles["card-container"]} key={idx}>
                         <div className={styles["form__group"]}>
                             <label htmlFor="">Name</label>

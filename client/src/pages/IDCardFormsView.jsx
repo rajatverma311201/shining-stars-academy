@@ -7,6 +7,7 @@ const IDCardFormsView = () => {
     const { name, address, image, _class, fatherName, mobile } =
         location.state || {};
 
+    console.log(location.state);
     return (
         <>
             {/* <h1>ID CARDs</h1> */}

@@ -56,7 +56,12 @@ const IDCardFormsView = () => {
                                 {address[idx]}
                             </div>
                         </div>
-                        <p className={styles["principal-sign"]}>Principal :</p>
+                        <p className={styles["principal-sign"]}>
+                            <span>Principal - </span>
+                            <span>
+                                <img src="/sign.jpg" />
+                            </span>
+                        </p>
                     </div>
                 ))}
             </div>

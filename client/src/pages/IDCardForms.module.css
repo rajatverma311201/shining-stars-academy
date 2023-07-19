@@ -246,3 +246,15 @@
 .id-card-container:nth-child(8) .school-info h2 {
     background-color: rgb(238, 9, 47) !important;
 } */
+
+.principal-sign {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+}
+
+.principal-sign img {
+    height: 1rem;
+    width: 3rem;
+}

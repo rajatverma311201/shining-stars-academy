@@ -1,10 +1,10 @@
 import { Box, Button, Modal } from "@mui/material";
 import React, { useRef, useState } from "react";
 import Webcam from "react-webcam";
-import styles from "./IDCardForms.module.css";
+import styles from "./TeacherCardForm.module.css";
 import { useLocation, useNavigate } from "react-router-dom";
 
-const IDCardForms = () => {
+const TeacherCardForm = () => {
     const navigate = useNavigate();
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
@@ -13,7 +13,7 @@ const IDCardForms = () => {
     const emptyArray = ["", "", "", "", "", "", "", ""];
     const [name, setName] = useState([...emptyArray]);
     const [fatherName, setFatherName] = useState([...emptyArray]);
-    const [_class, setClass] = useState([...emptyArray]);
+    const [designation, setDesignation] = useState([...emptyArray]);
     const [mobile, setMobile] = useState([...emptyArray]);
     const [address, setAddress] = useState([...emptyArray]);
     const [image, setImage] = useState([...emptyArray]);
@@ -32,12 +32,12 @@ const IDCardForms = () => {
     };
 
     const formSubmitHandler = () => {
-        navigate("/id-card-form/view", {
+        navigate("/teacher-card-form/view", {
             state: {
                 name,
                 address,
                 image,
-                _class,
+                designation,
                 fatherName,
                 mobile,
             },
@@ -45,7 +45,7 @@ const IDCardForms = () => {
     };
     return (
         <>
-            <h1>IDCardForms</h1>
+            <h1>TeacherCardForm</h1>
             <div className={styles["main-grid-container"]}>
                 {[0, 1, 2, 3, 4, 5, 6, 7].map((ele, idx) => (
                     <div className={styles["card-container"]} key={idx}>
@@ -76,33 +76,18 @@ const IDCardForms = () => {
                             />
                         </div>
                         <div className={styles["form__group"]}>
-                            <label htmlFor="">Class</label>
+                            <label htmlFor="">Designation</label>
 
-                            <select
+                            <input
                                 name=""
                                 id=""
-                                value={_class[idx]}
+                                value={designation[idx]}
                                 onChange={(e) => {
-                                    const currNames = [..._class];
+                                    const currNames = [...designation];
                                     currNames[idx] = e.target.value;
-                                    setClass([...currNames]);
+                                    setDesignation([...currNames]);
                                 }}
-                            >
-                                <option value="">Select Class</option>
-                                <option value="NUR">NUR</option>
-                                <option value="LKG">LKG</option>
-                                <option value="UKG">UKG</option>
-                                <option value="I">I</option>
-                                <option value="II">II</option>
-                                <option value="III">III</option>
-                                <option value="IV">IV</option>
-                                <option value="V">V</option>
-                                <option value="VI">VI</option>
-                                <option value="VII">VII</option>
-                                <option value="VIII">VIII</option>
-                                <option value="IX">IX</option>
-                                <option value="X">X</option>
-                            </select>
+                            />
                         </div>
                         <div className={styles["form__group"]}>
                             <label htmlFor="">Address</label>
@@ -202,4 +187,4 @@ const IDCardForms = () => {
     );
 };
 
-export default IDCardForms;
+export default TeacherCardForm;

@@ -1,10 +1,10 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import styles from "./IDCardForms.module.css";
-const IDCardFormsView = () => {
+import styles from "./TeacherCardForm.module.css";
+const TeacherCardFormView = () => {
     const location = useLocation();
 
-    const { name, address, image, _class, fatherName, mobile } =
+    const { name, address, image, designation, fatherName, mobile } =
         location.state || {};
 
     console.log(location.state);
@@ -36,8 +36,12 @@ const IDCardFormsView = () => {
                         <div className={styles["student-info"]}>
                             <div className={styles["name-heading"]}>Name</div>
                             <div className={styles["name"]}>{name[idx]}</div>
-                            <div className={styles["class-heading"]}>Class</div>
-                            <div className={styles["class"]}>{_class[idx]}</div>
+                            <div className={styles["class-heading"]}>
+                                Desig.
+                            </div>
+                            <div className={styles["class"]}>
+                                {designation[idx]}
+                            </div>
                             <div className={styles["father-heading"]}>
                                 Father
                             </div>
@@ -70,4 +74,4 @@ const IDCardFormsView = () => {
     );
 };
 
-export default IDCardFormsView;
+export default TeacherCardFormView;

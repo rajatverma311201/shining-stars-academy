@@ -1,0 +1,276 @@
+.main-grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    padding: 1rem;
+}
+
+.card-container {
+    border: 2px solid;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    padding: 0.5rem;
+    gap: 1rem;
+}
+.form__group {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.form__group label {
+    width: 75px;
+}
+.form__group input {
+    /* width: 100%; */
+    padding: 0.25rem 0.5rem;
+    font-size: 1rem;
+    flex: 1;
+}
+
+.id-cards-grid-container {
+    /* margin: auto; */
+    /* border: 1px solid black; */
+    width: 11in;
+    height: 8.5in;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    align-items: center;
+    justify-items: center;
+    /* row-gap: 1rem; */
+    /* column-gap: 2rem; */
+    padding: 0.5rem 2rem;
+}
+
+.id-card-container {
+    border: 1.75px solid darkgoldenrod;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: stretch;
+    /*background-image: url("/logo-small.jpg");
+    */
+    background-repeat: no-repeat;
+    background-position: center;
+    /*background-size: contain;
+    */ /*background-blend-mode: ;
+    */
+    position: relative;
+    padding: 0.5rem 1rem;
+    gap: 0.25rem;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    height: 3.375in;
+    width: 2.25in;
+
+    background: radial-gradient(
+        circle,
+        rgba(255, 195, 130, 0.09) 25%,
+        rgba(255, 238, 73, 0.09) 50%,
+        rgba(255, 231, 19, 0.09) 75%,
+        rgba(255, 255, 255, 0.09) 150%
+    );
+}
+
+.student-img {
+    width: 90px;
+    height: 90px;
+    align-self: center;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+.logo-img {
+    width: 1.5in;
+    height: auto;
+    position: absolute;
+
+    bottom: 15px;
+    left: 50%;
+    /* height: 75%;
+    width: auto; */
+    z-index: -1;
+    opacity: 0.25;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+}
+
+.school-info {
+    /* display: flex; */
+    gap: 1rem;
+    align-self: stretch;
+    /* width: 100%; */
+}
+
+.school-info h2 {
+    font-size: 14px;
+    background-color: rgb(0, 37, 71);
+    background-color: darkgoldenrod;
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    width: 100%;
+    text-align: center;
+    padding: 0.5rem 0.1rem;
+}
+
+.school-info p {
+    font-size: 9px;
+    text-align: center;
+    font-weight: 400;
+}
+
+.student-info {
+    display: grid;
+    grid-template-columns: 50px 1fr;
+    row-gap: 0.5rem;
+    width: 100%;
+    font-size: 10px;
+    color: #0e2335;
+    /* color: #214242; */
+}
+
+.student-info div:nth-child(even) {
+    font-weight: bold;
+}
+
+.principal-sign {
+    font-size: 10px;
+    font-weight: 500;
+}
+
+/*
+
+.id-card-container:nth-child(2) {
+    background: radial-gradient(
+        circle,
+        rgba(0, 37, 71, 0.1) 25%,
+        rgba(0, 119, 255, 0.1) 50%,
+        rgba(0, 50, 90, 0.1) 75%,
+        rgba(255, 255, 255, 0.1) 150%
+    );
+    border: 1px solid rgb(0, 37, 71);
+}
+.id-card-container:nth-child(2) .school-info h2 {
+    background-color: rgb(0, 37, 71);
+}
+
+.id-card-container:nth-child(3) {
+    background: radial-gradient(
+        circle,
+        rgba(132, 0, 255, 0.1) 25%,
+        rgba(183, 0, 255, 0.1) 50%,
+        rgba(176, 0, 192, 0.1) 75%,
+        rgba(255, 255, 255, 0.1) 150%
+    );
+    border: 1px solid rgb(132, 0, 255);
+}
+.id-card-container:nth-child(3) .school-info h2 {
+    background-color: rgb(132, 0, 255) !important;
+}
+.id-card-container:nth-child(4) {
+    background: radial-gradient(
+        circle,
+        rgba(16, 139, 0, 0.1) 25%,
+        rgba(34, 212, 11, 0.1) 50%,
+        rgba(96, 255, 5, 0.1) 75%,
+        rgba(255, 255, 255, 0.1) 150%
+    );
+    border: 1px solid rgb(16, 139, 0);
+}
+.id-card-container:nth-child(4) .school-info h2 {
+    background-color: rgb(16, 139, 0) !important;
+}
+.id-card-container:nth-child(5) {
+    background: radial-gradient(
+        circle,
+        rgba(146, 0, 0, 0.1) 25%,
+        rgba(255, 0, 0, 0.1) 50%,
+        rgba(255, 115, 0, 0.1) 75%,
+        rgba(255, 255, 255, 0.1) 150%
+    );
+    border: 1px solid rgb(146, 0, 0);
+}
+.id-card-container:nth-child(5) .school-info h2 {
+    background-color: rgb(146, 0, 0) !important;
+}
+.id-card-container:nth-child(6) {
+    background: radial-gradient(
+        circle,
+        rgba(208, 255, 0, 0.1) 25%,
+        rgba(143, 175, 1, 0.1) 50%,
+        rgba(255, 238, 0, 0.1) 75%,
+        rgba(255, 255, 255, 0.1) 150%
+    );
+    border: 1px solid rgb(119, 146, 0);
+}
+.id-card-container:nth-child(6) .school-info h2 {
+    background-color: rgb(119, 146, 0) !important;
+}
+.id-card-container:nth-child(7) {
+    background: radial-gradient(
+        circle,
+        rgba(238, 112, 9, 0.1) 25%,
+        rgba(235, 141, 0, 0.1) 50%,
+        rgba(255, 145, 1, 0.1) 75%,
+        rgba(255, 255, 255, 0.1) 150%
+    );
+    border: 1px solid rgb(238, 112, 9);
+}
+.id-card-container:nth-child(7) .school-info h2 {
+    background-color: rgb(238, 112, 9) !important;
+}
+.id-card-container:nth-child(8) {
+    background: radial-gradient(
+        circle,
+        rgba(238, 9, 47, 0.1) 25%,
+        rgba(255, 50, 111, 0.1) 50%,
+        rgba(196, 0, 82, 0.1) 75%,
+        rgba(255, 255, 255, 0.1) 150%
+    );
+    border: 1px solid rgb(238, 9, 47);
+}
+.id-card-container:nth-child(8) .school-info h2 {
+    background-color: rgb(238, 9, 47) !important;
+}
+*/
+.principal-sign {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+}
+
+.principal-sign img {
+    height: 1rem;
+    width: 3rem;
+}
+
+.id-card-container {
+    background: radial-gradient(
+        circle,
+        rgba(208, 255, 0, 0.1) 25%,
+        rgba(143, 175, 1, 0.1) 50%,
+        rgba(255, 238, 0, 0.1) 75%,
+        rgba(255, 255, 255, 0.1) 150%
+    );
+    border: 1px solid rgb(119, 146, 0);
+}
+.id-card-container .school-info h2 {
+    background-color: rgb(119, 146, 0) !important;
+}

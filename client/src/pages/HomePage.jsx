@@ -91,6 +91,14 @@ const HomePage = () => {
                     >
                         Fill ID Card Forms
                     </Button>
+                    <Button
+                        variant="contained"
+                        sx={{ fontSize: "1.25rem" }}
+                        size="large"
+                        onClick={() => navigate("/teacher-card-form")}
+                    >
+                        Teacher ID Card Forms
+                    </Button>
                 </div>
 
                 <div className={styles["admission-class-menu"]}>

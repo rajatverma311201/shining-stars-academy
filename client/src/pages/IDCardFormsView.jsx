@@ -20,10 +20,12 @@ const IDCardFormsView = () => {
                             alt=""
                             className={styles["logo-img"]}
                         />
+                        <h2 className={styles["school-name"]}>
+                            Shining Stars Academy
+                        </h2>
                         <div className={styles["school-info"]}>
                             <h2>
-                                Shining Stars Academy
-                                <p>Aswa Road, Matera Chauraha, Bahraich</p>
+                                <p>Matera Chauraha, Bahraich</p>
                                 <p>Contact - 8601610863</p>
                                 <p>2023-24</p>
                             </h2>
@@ -57,12 +59,12 @@ const IDCardFormsView = () => {
                                 {address[idx]}
                             </div>
                         </div>
-                        <p className={styles["principal-sign"]}>
-                            <span>Principal - </span>
+                        <div className={styles["principal-sign"]}>
+                            <span>Principal </span>
                             <span>
                                 <img src="/sign.jpg" />
                             </span>
-                        </p>
+                        </div>
                     </div>
                 ))}
             </div>

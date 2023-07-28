@@ -21,8 +21,8 @@ const IDCardForms = () => {
     const handleImageCapture = () => {
         console.log(idx);
         const cam = webcamRef.current.getScreenshot({
-            width: 200,
-            height: 200,
+            width: 400,
+            height: 400,
         });
         const currImages = [...image];
         currImages[idx] = cam;
@@ -180,11 +180,11 @@ const IDCardForms = () => {
                 >
                     <div className={styles["webcam-modal"]}>
                         <Webcam
-                            width={400}
-                            height={400}
+                            width={500}
+                            height={500}
                             screenshotFormat="image/jpeg"
                             ref={webcamRef}
-                            screenshotQuality={0.5}
+                            screenshotQuality={1}
                         />
                         <Button
                             variant="contained"

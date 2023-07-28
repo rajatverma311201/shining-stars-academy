@@ -81,7 +81,7 @@
 .student-img {
     border: 2px solid rgb(0, 37, 71);
     width: 110px;
-    height: 125px;
+    height: 120px;
     align-self: center;
     border-radius: 5px;
     -webkit-border-radius: 5px;
@@ -90,21 +90,8 @@
     -o-border-radius: 5px;
 }
 .logo-img {
-    width: 1.4in;
-    height: auto;
-    position: absolute;
-
-    bottom: 10px;
-    left: 50%;
-    /* height: 75%;
-    width: auto; */
-    z-index: -1;
-    opacity: 0.25;
-    transform: translateX(-50%);
-    -webkit-transform: translateX(-50%);
-    -moz-transform: translateX(-50%);
-    -ms-transform: translateX(-50%);
-    -o-transform: translateX(-50%);
+    height: 1.5rem;
+    width: auto;
 }
 
 .school-info {
@@ -175,8 +162,8 @@
 }
 
 .principal-sign {
-    font-size: 10px;
-    font-weight: 500;
+    font-size: 12px;
+    font-weight: 600;
 }
 
 /*
@@ -281,11 +268,11 @@
     /* padding-inline: 0.75rem; */
 }
 
-.principal-sign span:nth-child(2) {
+.principal-sign span:nth-child(3) {
     display: flex;
 }
 
-.principal-sign img {
+.principal-sign-img {
     height: 1rem;
     width: 3rem;
 }

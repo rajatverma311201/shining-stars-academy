@@ -15,11 +15,6 @@ const TeacherCardFormView = () => {
             <div className={styles["id-cards-grid-container"]}>
                 {[0, 1, 2, 3, 4, 5, 6, 7].map((ele, idx) => (
                     <div className={styles["id-card-container"]}>
-                        <img
-                            src="/logo-small.jpg"
-                            alt=""
-                            className={styles["logo-img"]}
-                        />
                         <h2 className={styles["school-name"]}>
                             Shining Stars Academy
                         </h2>
@@ -63,12 +58,20 @@ const TeacherCardFormView = () => {
                                 {address[idx]}
                             </div>
                         </div>
-                        <p className={styles["principal-sign"]}>
-                            <span>Principal - </span>
+                        <div className={styles["principal-sign"]}>
+                            <img
+                                src="/logo-small.jpg"
+                                alt=""
+                                className={styles["logo-img"]}
+                            />
+                            <span>Principal Sign</span>
                             <span>
-                                <img src="/sign.jpg" />
+                                <img
+                                    className={styles["principal-sign-img"]}
+                                    src="/sign.jpg"
+                                />
                             </span>
-                        </p>
+                        </div>
                     </div>
                 ))}
             </div>

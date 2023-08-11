@@ -31,28 +31,28 @@ const TeacherCardFormView = () => {
                             className={styles["student-img"]}
                         />
                         <div className={styles["student-info"]}>
-                            <div className={styles["name-heading"]}>Name</div>
+                            <div className={styles["name-heading"]}>Name -</div>
                             <div className={styles["name"]}>{name[idx]}</div>
                             <div className={styles["class-heading"]}>
-                                Desig.
+                                Desig. -
                             </div>
                             <div className={styles["class"]}>
                                 {designation[idx]}
                             </div>
                             <div className={styles["father-heading"]}>
-                                Father
+                                Father -
                             </div>
                             <div className={styles["father"]}>
                                 Mr. {fatherName[idx]}
                             </div>
                             <div className={styles["mobile-heading"]}>
-                                Mobile
+                                Mobile -
                             </div>
                             <div className={styles["mobile"]}>
                                 {mobile[idx]}
                             </div>
                             <div className={styles["address-heading"]}>
-                                Address
+                                Address -
                             </div>
                             <div className={styles["address"]}>
                                 {address[idx]}

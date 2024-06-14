@@ -180,11 +180,12 @@ const IDCardForms = () => {
                 >
                     <div className={styles["webcam-modal"]}>
                         <Webcam
-                            width={500}
-                            height={500}
-                            screenshotFormat="image/jpeg"
+                            width={750}
+                            height={600}
+                            screenshotFormat="image/png"
                             ref={webcamRef}
                             screenshotQuality={1}
+                            imageSmoothing={false}
                         />
                         <Button
                             variant="contained"

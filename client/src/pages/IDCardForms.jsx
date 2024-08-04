@@ -1,8 +1,8 @@
 import { Box, Button, Modal } from "@mui/material";
 import React, { useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Webcam from "react-webcam";
 import styles from "./IDCardForms.module.css";
-import { useLocation, useNavigate } from "react-router-dom";
 
 const IDCardForms = () => {
     const navigate = useNavigate();
@@ -140,6 +140,39 @@ const IDCardForms = () => {
                             >
                                 Take Image
                             </Button>
+
+                            <br />
+
+                            {/* <Button
+                                variant="contained"
+                                sx={{ fontSize: "1rem" }}
+                                size="small"
+                                onClick={() => {
+                                    setIdx(idx);
+                                    handleOpen();
+                                }}
+                            >
+                                Take Image
+                            </Button> */}
+
+                            <input
+                                type="file"
+                                accept="image/*"
+                                onClick={() => {
+                                    setIdx(idx);
+                                }}
+                                onChange={(e) => {
+                                    const currImages = [...image];
+
+                                    currImages[idx] = URL.createObjectURL(
+                                        e.target.files[0]
+                                    );
+
+                                    console.log(e.target.files[0]);
+                                    setImage([...currImages]);
+                                }}
+                            />
+
                             <img
                                 src={image[idx]}
                                 width={"150px"}

@@ -1,5 +1,5 @@
 import React from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import styles from "./IDCardForms.module.css";
 const IDCardFormsView = () => {
     const location = useLocation();
@@ -14,7 +14,7 @@ const IDCardFormsView = () => {
 
             <div className={styles["id-cards-grid-container"]}>
                 {[0, 1, 2, 3, 4, 5, 6, 7].map((ele, idx) => (
-                    <div className={styles["id-card-container"]}>
+                    <div className={styles["id-card-container"]} key={idx}>
                         <h2 className={styles["school-name"]}>
                             Shining Stars Academy
                         </h2>
@@ -22,7 +22,7 @@ const IDCardFormsView = () => {
                             <h2>
                                 <p>Matera Chauraha, Bahraich</p>
                                 <p>Contact - 8601610863</p>
-                                <p>2023-24</p>
+                                <p>2024-25</p>
                             </h2>
                         </div>
                         <img

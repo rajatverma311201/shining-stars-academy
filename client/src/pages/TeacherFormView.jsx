@@ -22,7 +22,7 @@ const TeacherCardFormView = () => {
                             <h2>
                                 <p>Matera Chauraha, Bahraich</p>
                                 <p>Contact - 8601610863</p>
-                                <p>2023-24</p>
+                                <p>2024-25</p>
                             </h2>
                         </div>
                         <img

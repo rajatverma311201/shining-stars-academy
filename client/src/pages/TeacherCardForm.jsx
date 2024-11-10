@@ -125,6 +125,24 @@ const TeacherCardForm = () => {
                             >
                                 Take Image
                             </Button>
+
+                            <input
+                                type="file"
+                                accept="image/*"
+                                onClick={() => {
+                                    setIdx(idx);
+                                }}
+                                onChange={(e) => {
+                                    const currImages = [...image];
+
+                                    currImages[idx] = URL.createObjectURL(
+                                        e.target.files[0]
+                                    );
+
+                                    console.log(e.target.files[0]);
+                                    setImage([...currImages]);
+                                }}
+                            />
                             <img
                                 src={image[idx]}
                                 width={"150px"}
